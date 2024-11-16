@@ -40,7 +40,7 @@
 }
 
 .input_component, .book-appointment-section .appointment-container .book-appointment-container form .appointment-date-select, .password-reset-section .password-reset-container .password-reset-right-container form .input-container input, .contact-section .contact-container .contact-right-container form input,
-.contact-section .contact-container .contact-right-container form textarea, .login-section .login-container .login-right-container form .input-container input, .book-appointment-section .login-container .login-right-container form .input-container input, .about-us-section .login-container .login-right-container form .input-container input, .about-us-section .about-container .login-right-container form .input-container input, .about-us-section .about-container .about-right-container form .input-container input, .password-reset-section .login-container .login-right-container form .input-container input, .password-reset-section .password-reset-container .login-right-container form .input-container input, .contact-section .login-container .login-right-container form .input-container input, .contact-section .contact-container .login-right-container form .input-container input, .register-section .login-container .login-right-container form .input-container input, .register-section .register-container .login-right-container form .input-container input, .contact .contact-form form input {
+.contact-section .contact-container .contact-right-container form textarea, .login-section .login-container .login-right-container form .input-container input, .book-appointment-section .login-container .login-right-container form .input-container input, .about-us-section .login-container .login-right-container form .input-container input, .about-us-section .about-container .login-right-container form .input-container input, .about-us-section .about-container .about-right-container form .input-container input, .password-reset-section .login-container .login-right-container form .input-container input, .password-reset-section .password-reset-container .login-right-container form .input-container input, .contact-section .login-container .login-right-container form .input-container input, .contact-section .contact-container .login-right-container form .input-container input, .register-section .login-container .login-right-container form .input-container input, .register-section .register-container .login-right-container form .input-container input, .contact .contact-form form input, #search-instructor {
   background-color: var(--theme_primary_color);
   width: 100%;
   margin-top: 1rem;
@@ -432,6 +432,17 @@ body.dark .switch .bi-brightness-high, body.dark .mobile-menu .container .body u
 }
 .hero-section .container .hero-section-right-area a:hover {
   box-shadow: 0px 0px 20px 0px var(--theme_hover_color);
+}
+
+#search-instructor {
+  margin-top: 1rem;
+  width: 83.3333333333%;
+  cursor: pointer;
+}
+@media (min-width: 1024px) {
+  #search-instructor {
+    width: 33.3333333333%;
+  }
 }
 
 .appointment-list-section {
@@ -953,7 +964,8 @@ footer .bottom-footer .created-by .created {
   width: 100%;
 }
 .map-section span {
-  margin-top: 1rem;
+  padding: 0.4em;
+  margin-top: 0.5rem;
   color: var(--theme_text_color);
   font-family: "Crimson Text", serif;
 }

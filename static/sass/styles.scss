@@ -395,6 +395,15 @@ body.dark .switch .bi-brightness-high {
   }
 }
 
+#search-instructor{
+  margin-top: 1rem;
+  @extend .input_component;
+  width: calc(100% / 1.2);
+  cursor: pointer;
+  @include breakpoint(lg){
+    width: calc(100% / 3);
+  }
+}
 .appointment-list-section {
   margin-top: 9rem;
   align-items: center;
@@ -1023,8 +1032,8 @@ footer {
     @include breakpoint(lg) {
       font-size: 1.4rem;
     }
-
-    margin-top: 1rem;
+    padding: 0.4em;
+    margin-top: 0.5rem;
     color: var(--theme_text_color);
     font-family: $crimson_font;
   }
