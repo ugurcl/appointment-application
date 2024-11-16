@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hakkımızda</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="../static/images/logo.jpg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../static/sass/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="navbar-left-menu">
+          <img src="../static/images/logo.jpg" alt="logo" class="navbar-logo" />
+          <span class="navbar-title">Randevu Otomasyonu</span>
+        </div>
+        <div class="navbar-right-menu">
+          <ul class="navbar-ul">
+            <li class="navbar-links"><a href="index.html">Ana Sayfa</a></li>
+            <li class="navbar-links"><a href="">Hakkımızda</a></li>
+            <li class="navbar-links"><a href="">İletişim</a></li>
+            <li class="navbar-links"><a href="">Randevu Al</a></li>
+            <li class="navbar-links"><a href="login.html">Giriş Yap</a></li>
+            <li class="navbar-links active">
+              <a href="register.html">Kayıt Ol</a>
+            </li>
+          </ul>
+        </div>
+
+        <button class="switch">
+          <i class="bi bi-brightness-high"></i>
+          <i class="bi bi-moon-stars"></i>
+        </button>
+        <button><i class="bi bi-list mobile-menu-toggle"></i></button>
+      </nav>
+    </header>
+    <section class="mobile-menu">
+      <div class="container">
+        <div class="head">
+          <img src="../static/images/logo.jpg" alt="" />
+          <span>Bingöl Üniversitesi</span>
+        </div>
+
+        <div class="body">
+          <ul>
+            <li><a href="">Ana Sayfa</a></li>
+            <li><a href="">Hakkımızda</a></li>
+            <li><a href="">İletişim</a></li>
+            <li><a href="">Randevu Al</a></li>
+            <li><a href="">Giriş Yap</a></li>
+            <li><a href="">Kayıt Ol</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-us-section">
+      <h1>Hakkımızda</h1>
+      <div class="about-container">
+        <img src="../static/images/about.png" alt="" />
+        <div class="about-right-container">
+          <span class="title">Bingöl Üniversitesi</span>
+          <span
+            >Bingöl Üniversitesi; 5662 Sayılı Yükseköğretim Kurumları Teşkilatı
+            Kanununda ve Yükseköğretim Kurumları Öğretim Elemanlarının Kadroları
+            Hakkında Kanun Hükmünde Kararname ile Genel Kadro ve Usulü Hakkında
+            Kanun Hükmünde Kararnameye Ekli Cetvellerde Değişiklik Yapılmasına
+            Dair Kanunun 29 Mayıs 2007 tarihinde Resmi Gazete’de yayımlanmasıyla
+            kurulan 17 yeni üniversiteden biridir.</span
+          >
+          <span>
+            Kurulduğu yılda Rektörlüğe bağlı olarak yeni kurulan Fen - Edebiyat
+            Fakültesi, İktisadi ve İdari Bilimler Fakültesi ile Fırat
+            Üniversitesi Rektörlüğüne bağlı iken adı ve bağlantısı
+            değiştirilerek oluşturulan ve rektörlüğe bağlanan Ziraat Fakültesi,
+            Sağlık Yüksekokulu, Meslek Yüksekokulu, Sağlık Hizmetleri Meslek
+            Yüksekokulu ile Rektörlüğe bağlı olarak kurulan Sosyal Bilimler
+            Enstitüsü ile Fen Bilimleri Enstitüsünden oluşmuştur.
+          </span>
+        </div>
+      </div>
+
+      <div class="slider-container">
+        <h1 class="title">Resim Galerisi</h1>
+        <div class="slider">
+          <img
+            src="https://galeri.bingol.edu.tr/media/30506/whatsapp-image-2024-05-06-at-5-03-52-pm.jpeg?anchor=center&mode=min&width=1140"
+            alt="Resim 1"
+          />
+          <img
+            src="https://galeri.bingol.edu.tr/media/30503/d72ff06d-4138-4175-85ad-056df52306af.jpeg?anchor=center&mode=min&width=1140"
+            alt="Resim 2"
+          />
+          <img
+            src="https://galeri.bingol.edu.tr/media/30505/fbc90292-c116-4ef1-9a76-31077c061345.jpeg?anchor=center&mode=min&width=1140"
+            alt="Resim 3"
+          />
+          <img src="https://galeri.bingol.edu.tr/media/30510/gm4u8hawuaa545b.jpeg?anchor=center&mode=min&width=1140" alt="">
+          <img src="https://gencmyo.bingol.edu.tr/media/30752/whatsapp-image-2024-05-16-at-12-56-21-3.jpeg?anchor=center&mode=min&width=1140" alt="">
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-container">
+        <div class="left-menu">
+          <img src="../static/images/logo.jpg" alt="" />
+          <span class="title">Bingöl Üniversitesi</span>
+          <span class="description">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum,
+            qui deserunt numquam, totam error magnam dolor neque quo
+            repellendus, ipsum quasi enim inventore aliquid modi porro eius
+            maxime impedit sed.
+          </span>
+        </div>
+        <div class="middle-menu">
+          <ul>
+            <li><a href="">Ana Sayfa</a></li>
+            <li><a href="">Hakkımızda</a></li>
+            <li><a href="">Randevu Al</a></li>
+            <li><a href="">İletişim</a></li>
+          </ul>
+        </div>
+        <div class="right-menu">
+          <ul>
+            <li>
+              <a href=""
+                ><i class="bi bi-instagram"> </i> <span>Instagram</span></a
+              >
+            </li>
+            <li>
+              <a href=""
+                ><i class="bi bi-facebook"> </i> <span>Facebook</span></a
+              >
+            </li>
+            <li>
+              <a href=""><i class="bi bi-youtube"> </i> <span>YouTube</span></a>
+            </li>
+            <li>
+              <a href=""
+                ><i class="bi bi-linkedin"> </i> <span>LinkedIn</span></a
+              >
+            </li>
+            <li>
+              <a href=""
+                ><i class="bi bi-link"> </i> <span>Resmi Web Sitesi</span></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bottom-footer">
+        <p>
+          &copy; 2024 Bingöl Üniversitesi Genç Meslek Yüksekokulu Bilişim
+          Güvenliği Bölümü Tarafınca Yapılan Randevu Otomasyonudur.
+        </p>
+        <p class="created-by">
+          Created by <span class="created">uğur c4lıskan</span>
+        </p>
+      </div>
+    </footer>
+    <script src="../static/javascript/script.js"></script>
+  </body>
+</html>

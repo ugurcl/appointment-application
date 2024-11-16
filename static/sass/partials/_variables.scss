@@ -1,0 +1,23 @@
+//dark thema
+
+:root {
+    --theme_background_color:#f7f6fe;
+    --theme_primary_color:#fefeff;
+    --theme_text_color:#010107e7;
+    --theme_hover_color:#655fca;
+    --theme_secondary_text_color:#3b3d3f;
+    --theme_secondary_color:#625cc7;
+}
+
+.dark {
+    --theme_background_color:#202029;
+    --theme_primary_color:#282c39;
+    --theme_text_color:#c9c8d3;
+    --theme_secondary_color:#625cc7;
+    --theme_secondary_text_color:#ffffffb9;
+    --theme_hover_color:#7775d694;
+}
+
+$font_family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$handwirtten_font_family: "Ruthie", cursive;
+$crimson_font:"Crimson Text", serif;
