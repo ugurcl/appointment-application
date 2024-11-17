@@ -7,6 +7,74 @@ body {
   background-color: var(--theme_background_color);
 }
 
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background-color: #202029;
+  transition: opacity 1.5s ease-in-out;
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  width: 50px;
+  aspect-ratio: 1.154;
+  position: relative;
+  background: conic-gradient(
+    from 120deg at 50% 64%,
+    #0000,
+    var(--theme_hover_color) 1deg 120deg,
+    #0000 121deg
+  );
+  animation: l27-0 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  transform-origin: 50% 66%;
+  animation: l27-1 1.5s infinite;
+}
+.loader:after {
+  --s: -1;
+}
+@keyframes l27-0 {
+  0%,
+  30% {
+    transform: rotate(0);
+  }
+  70% {
+    transform: rotate(120deg);
+  }
+  70.01%,
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes l27-1 {
+  0% {
+    transform: rotate(calc(var(--s, 1) * 120deg)) translate(0);
+  }
+  30%,
+  70% {
+    transform: rotate(calc(var(--s, 1) * 120deg))
+      translate(calc(var(--s, 1) * -5px), 10px);
+  }
+  100% {
+    transform: rotate(calc(var(--s, 1) * 120deg)) translate(0);
+  }
+}
 .dropdown {
   @include breakpoint(xl) {
     display: flex;
@@ -395,12 +463,12 @@ body.dark .switch .bi-brightness-high {
   }
 }
 
-#search-instructor{
+#search-instructor {
   margin-top: 1rem;
   @extend .input_component;
   width: calc(100% / 1.2);
   cursor: pointer;
-  @include breakpoint(lg){
+  @include breakpoint(lg) {
     width: calc(100% / 3);
   }
 }
@@ -645,6 +713,13 @@ body.dark .switch .bi-brightness-high {
         cursor: pointer;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         width: fit-content;
+
+        &:hover {
+          background-color: transparent;
+          box-shadow: rgba(9, 88, 122, 0.685) 0px 2px 4px 0px,
+            rgba(13, 75, 102, 0.74) 0px 2px 16px 0px;
+          transition: all 1s;
+        }
       }
     }
   }
@@ -1305,22 +1380,22 @@ footer {
     padding: 1rem;
     align-items: center;
 
-    @include breakpoint(lg){
+    @include breakpoint(lg) {
       padding: 4rem;
     }
     .profile {
       display: flex;
       width: calc(100% / 1.2);
       flex-direction: column;
-      @include breakpoint(lg){
+      @include breakpoint(lg) {
         flex-direction: row;
       }
       img {
         width: 100%;
-        @include breakpoint(lg){
-            width: 14rem;
+        @include breakpoint(lg) {
+          width: 14rem;
         }
-        
+
         height: 12rem;
         object-fit: contain;
         object-position: center;
@@ -1332,7 +1407,7 @@ footer {
         margin-left: 0;
         margin-top: 1rem;
 
-        @include breakpoint(lg){
+        @include breakpoint(lg) {
           margin-left: 1rem;
           margin-top: 0;
         }
