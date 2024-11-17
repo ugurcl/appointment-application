@@ -71,3 +71,18 @@ scrollToTopBtn.addEventListener('click', function() {
     behavior: 'smooth'
   });
 });
+
+function changeProfileImage(event) {
+  const file = event.target.files[0]; 
+  if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+          const imageUrl = e.target.result; 
+          const profileImage = document.getElementById('profile-img');
+          profileImage.src = imageUrl; 
+      };
+
+      reader.readAsDataURL(file); 
+  }
+}

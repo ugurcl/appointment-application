@@ -37,6 +37,7 @@ body {
   );
   animation: l27-0 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
 }
+
 .loader:before,
 .loader:after {
   content: "";
@@ -46,35 +47,43 @@ body {
   transform-origin: 50% 66%;
   animation: l27-1 1.5s infinite;
 }
+
 .loader:after {
   --s: -1;
 }
+
 @keyframes l27-0 {
   0%,
   30% {
     transform: rotate(0);
   }
+
   70% {
     transform: rotate(120deg);
   }
+
   70.01%,
   100% {
     transform: rotate(360deg);
   }
 }
+
 @keyframes l27-1 {
   0% {
     transform: rotate(calc(var(--s, 1) * 120deg)) translate(0);
   }
+
   30%,
   70% {
     transform: rotate(calc(var(--s, 1) * 120deg))
       translate(calc(var(--s, 1) * -5px), 10px);
   }
+
   100% {
     transform: rotate(calc(var(--s, 1) * 120deg)) translate(0);
   }
 }
+
 .dropdown {
   @include breakpoint(xl) {
     display: flex;
@@ -145,7 +154,7 @@ header {
   .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: sp;
     padding: 1rem 1rem;
 
     @include breakpoint(xl) {
@@ -468,10 +477,12 @@ body.dark .switch .bi-brightness-high {
   @extend .input_component;
   width: calc(100% / 1.2);
   cursor: pointer;
+
   @include breakpoint(lg) {
     width: calc(100% / 3);
   }
 }
+
 .appointment-list-section {
   margin-top: 9rem;
   align-items: center;
@@ -1107,6 +1118,7 @@ footer {
     @include breakpoint(lg) {
       font-size: 1.4rem;
     }
+
     padding: 0.4em;
     margin-top: 0.5rem;
     color: var(--theme_text_color);
@@ -1228,8 +1240,10 @@ footer {
   flex-direction: column;
   justify-content: center;
   margin-top: 4rem;
+
   .not-found-image {
     height: 18rem;
+
     @include breakpoint(lg) {
       height: 30rem;
     }
@@ -1260,17 +1274,21 @@ footer {
 
 .about-us-section {
   @extend .login-section;
+
   h1 {
     @extend .title_component;
   }
+
   .about-container {
     @extend .login-container;
 
     .about-right-container {
       width: calc(100% / 1.2);
+
       @include breakpoint(lg) {
         width: calc(100% / 2.4);
       }
+
       .title {
         font-weight: 400;
         font-family: $crimson_font;
@@ -1278,6 +1296,7 @@ footer {
         border-bottom: 2px solid var(--theme_hover_color);
         width: fit-content;
       }
+
       @extend .login-right-container;
 
       span {
@@ -1288,16 +1307,20 @@ footer {
       }
     }
   }
+
   .slider-container {
     position: relative;
+
     @include breakpoint(lg) {
       width: 60%;
     }
+
     width: calc(100% / 1.2);
     margin: 0 auto;
     overflow: hidden;
     margin: 4rem auto 0;
     text-align: center;
+
     .title {
       margin-bottom: 2rem;
       @extend .title_component;
@@ -1305,10 +1328,12 @@ footer {
       font-weight: lighter;
       font-family: $handwirtten_font_family;
     }
+
     .slider {
       display: flex;
       transition: transform 0.5s ease;
       width: 100%;
+
       img {
         width: 100%;
         display: block;
@@ -1316,6 +1341,7 @@ footer {
         transition: transform 0.9s ease;
       }
     }
+
     button {
       position: absolute;
       top: 50%;
@@ -1328,13 +1354,16 @@ footer {
       cursor: pointer;
       margin: 1rem;
       z-index: 10;
+
       &:hover {
         background-color: var(--theme_background_color);
       }
     }
+
     .prev {
       left: 0;
     }
+
     .next {
       right: 0;
     }
@@ -1353,6 +1382,7 @@ footer {
   transition: opacity 0.3s ease-in-out;
   color: white;
   border-radius: 10px;
+
   &:hover {
     background-color: var(--theme_primary_color);
   }
@@ -1360,6 +1390,7 @@ footer {
   &.show {
     display: block;
   }
+
   i {
     font-weight: bold;
     font-size: 1rem;
@@ -1383,15 +1414,19 @@ footer {
     @include breakpoint(lg) {
       padding: 4rem;
     }
+
     .profile {
       display: flex;
       width: calc(100% / 1.2);
       flex-direction: column;
+
       @include breakpoint(lg) {
         flex-direction: row;
       }
+
       img {
         width: 100%;
+
         @include breakpoint(lg) {
           width: 14rem;
         }
@@ -1420,6 +1455,7 @@ footer {
           border-bottom: 1px solid var(--theme_secondary_color);
           font-size: 1.2rem;
         }
+
         .about {
           color: var(--theme_secondary_text_color);
           font-family: $font_family;
@@ -1427,6 +1463,7 @@ footer {
           margin-top: 1rem;
           letter-spacing: 0.4px;
         }
+
         .profile-contact-div {
           margin-top: 1rem;
 
@@ -1434,6 +1471,7 @@ footer {
             color: var(--theme_hover_color);
             font-weight: lighter;
           }
+
           span {
             font-family: $crimson_font;
             font-weight: 600;
@@ -1448,6 +1486,7 @@ footer {
     .book-appointment-container {
       margin-top: 5rem;
       width: calc(100% / 1.2);
+
       form {
         display: flex;
         flex-direction: column;
@@ -1469,6 +1508,7 @@ footer {
           cursor: pointer;
           appearance: none;
           font-size: 1rem !important;
+
           option {
             color: var(--theme_text_color);
             font-family: $font_family;
@@ -1485,6 +1525,7 @@ footer {
           flex-wrap: wrap;
           margin-top: 1rem;
           gap: 1rem;
+
           button {
             background-color: var(--theme_hover_color);
             padding: 0.8rem 1rem;
@@ -1493,6 +1534,7 @@ footer {
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             color: var(--theme_text_color);
             border: 1px solid var(--theme_hover_color);
+
             &:hover {
               transition: all 0.4s;
               background-color: transparent;
@@ -1518,6 +1560,381 @@ footer {
             transition: all 0.5s;
           }
         }
+      }
+    }
+  }
+}
+
+.profile-section {
+  @extend .login-section;
+
+  .section-title {
+    @extend .title_component;
+  }
+
+  .profile-container {
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+
+    @include breakpoint(lg) {
+      padding: 4rem;
+    }
+
+    .user-profile-container {
+      width: calc(100% / 1);
+
+      @include breakpoint(lg) {
+        width: calc(100% / 1.5);
+      }
+
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .profile-title {
+          color: var(--theme_text_color);
+          font-family: $font_family;
+          font-size: 1.3rem;
+          font-weight: 500;
+          margin-bottom: 2.8rem;
+          margin-top: 2rem;
+
+          @include breakpoint(lg) {
+            margin-top: 0;
+          }
+
+          width: fit-content;
+          border-bottom: 1px solid var(--theme_hover_color);
+        }
+
+        .input-container {
+          display: flex;
+          width: 100%;
+
+          label {
+            margin-top: 1.2rem;
+            color: var(--theme_secondary_text_color);
+            font-family: $crimson_font;
+            font-weight: 100;
+            width: calc(100% / 1.2);
+            text-wrap: nowrap;
+
+            @include breakpoint(lg) {
+              width: calc(100% / 3);
+            }
+          }
+
+          input {
+            @extend .input_component;
+            margin-left: 2rem;
+          }
+
+          .profile-image-settings {
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            span {
+              color: var(--theme_secondary_text_color);
+              font-family: $crimson_font;
+              font-weight: 300;
+              width: calc(100% / 1.5);
+
+              @include breakpoint(lg) {
+                width: calc(100% / 3.5);
+              }
+            }
+
+            img {
+              width: 3rem;
+              height: 3rem;
+              border-radius: 50%;
+              object-fit: cover;
+              object-position: center;
+            }
+          }
+        }
+
+        button {
+          border-top-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          border: 1px solid var(--theme_hover_color);
+          width: fit-content;
+          padding: 0.6rem 1.2rem;
+          cursor: pointer;
+          color: var(--theme_text_color);
+          font-weight: lighter;
+          margin-top: 2rem;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+            rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+            rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          background-color: var(--theme_hover_color);
+
+          &:hover {
+            background-color: transparent;
+            transition: all 0.5s;
+          }
+        }
+      }
+    }
+
+    .user-password-container {
+      width: calc(100% / 1);
+
+      @include breakpoint(lg) {
+        width: calc(100% / 1.5);
+      }
+
+      padding: 0.5rem;
+      margin-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      margin-top: 5rem;
+
+      .password-title {
+        color: var(--theme_text_color);
+        font-family: $font_family;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        width: fit-content;
+        border-bottom: 1px solid var(--theme_hover_color);
+      }
+
+      form {
+        margin-top: 1.4rem;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: start;
+
+        .input-container {
+          margin-top: 1rem;
+          display: flex;
+          width: 100%;
+
+          label {
+            margin-top: 1.2rem;
+            color: var(--theme_secondary_text_color);
+            font-family: $crimson_font;
+            font-weight: 100;
+            text-wrap: nowrap;
+            width: calc(100% / 1);
+
+            @include breakpoint(lg) {
+              width: calc(100% / 3);
+            }
+          }
+
+          input {
+            @extend .input_component;
+          }
+        }
+
+        button {
+          border-top-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          border: 1px solid var(--theme_hover_color);
+          width: fit-content;
+          padding: 0.6rem 1.2rem;
+          cursor: pointer;
+          color: var(--theme_text_color);
+          font-weight: lighter;
+          margin-top: 2rem;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+            rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+            rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          background-color: var(--theme_hover_color);
+
+          &:hover {
+            background-color: transparent;
+            transition: all 0.5s;
+          }
+        }
+      }
+    }
+  }
+}
+
+.new-password-done {
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+
+  span {
+    @extend .success;
+
+    a {
+      text-decoration: underline;
+      color: #024612;
+    }
+  }
+}
+
+.appointment-user-section {
+  @extend .login-section;
+  width: 100%;
+
+  .appointment-title {
+    @extend .title_component;
+  }
+
+  width: 100%;
+  padding: 1rem;
+
+  .table-container {
+    width: calc(100% / 1.1);
+    overflow-x: auto;
+
+    .appointment-table {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      margin-top: 1.8rem;
+      width: calc(100% / 1);
+      border-collapse: collapse;
+      overflow-x: auto;
+
+      td,
+      th {
+        padding: 15px;
+        white-space: nowrap;
+      }
+
+      tbody {
+        tr {
+          cursor: pointer;
+        }
+
+        tr:nth-child(even) {
+          background-color: var(--theme_primary_color) !important;
+        }
+
+        tr:hover {
+          background-color: var(--theme_hover_color);
+        }
+      }
+
+      td {
+        text-align: left;
+
+        color: var(--theme_secondary_text_color);
+        font-family: $font_family;
+        font-size: 0.8rem;
+        font-weight: 500;
+
+        a {
+          color: var(--theme_secondary_color);
+          font-family: $font_family;
+          font-size: 0.8rem;
+          text-transform: capitalize;
+        }
+      }
+
+      th {
+        padding-top: 12px;
+        padding-bottom: 10px;
+        text-align: left;
+        background-color: var(--theme_primary_color);
+        color: var(--theme_text_color);
+        font-family: $font_family;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .load-more-appointments {
+    background-color: var(--theme_primary_color);
+    margin-top: 2rem;
+    padding: 0.6rem 2.7rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    color: var(--theme_text_color);
+    border: 1px solid var(--theme_primary_color);
+    cursor: pointer;
+
+    &:hover {
+      transition: all 0.2s;
+
+      background-color: transparent;
+    }
+  }
+}
+
+
+
+
+.create-appointment {
+  @extend .login-section;
+
+  .create-appointment-title {
+    @extend .title_component;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 2rem;
+    width: calc(100% / 1.3);
+    @include breakpoint(lg){
+      width: calc(100% / 2.3);
+    }
+    .input-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+     
+      @include breakpoint(lg){
+        flex-direction: row;
+        justify-content: space-between;
+      }
+     
+      margin-top: 1.4rem;
+      label {
+        color: var(--theme_text_color);
+        font-family: $font_family;
+        font-weight: 600;
+      }
+      input[type="checkbox"]{
+        margin-top: 1rem;
+        @include breakpoint(lg){
+          margin-top: 0;
+        }
+      }
+      input:not(input[type="checkbox"]) {
+        margin-top: 1rem;
+        @include breakpoint(lg){
+          margin-top: 0
+        }
+        outline: none;
+        border: 1px solid var(--theme_primary_color);
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        width: calc(100% / 1.2);
+        @include breakpoint(lg){
+          width: calc(100% / 2);
+        }
+        color: var(--theme_text_color);
+        font-family: $font_family;
+        background-color: var(--theme_primary_color);
+      }
+      
+    }
+    button {
+      color: var(--theme_text_color);
+      width: fit-content;
+      background-color: var(--theme_secondary_color);
+      margin-top: 1.2rem;
+      padding: 0.5rem 1.2rem;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      cursor: pointer;
+      border-bottom-left-radius: 10px;
+      border-top-right-radius: 10px;
+      &:hover {
+        transition: all 1s;
+        background-color: transparent;
       }
     }
   }
