@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const loader = this.document.querySelector('.loader-container');
   setTimeout(() => {
     loader.classList.add('hidden');
-  }, 2000)
+  }, 1000)
   const saved_theme = localStorage.getItem("theme");
   if (saved_theme === "dark") {
     document.body.classList.add("dark");
