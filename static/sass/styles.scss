@@ -472,17 +472,39 @@ body.dark .switch .bi-brightness-high {
   }
 }
 
-#search-instructor {
-  margin-top: 1rem;
-  @extend .input_component;
-  width: calc(100% / 1.2);
-  cursor: pointer;
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% / 1.1);
 
-  @include breakpoint(lg) {
-    width: calc(100% / 3);
+  @include breakpoint(lg){
+    width: calc(100% / 1.8);
+  }
+  
+  #search-instructor {
+    width: 100%;
+    margin-top: 1rem;
+    @extend .input_component;
+    width: calc(100% / 1);
+    cursor: pointer;
+  
+    @include breakpoint(lg) {
+      width: calc(100% / 1);
+    }
+  }
+
+  #academic-departments {
+    @extend .input_component;
+    width: calc(100% / 2);
+    @include breakpoint(lg){
+      width: calc(100% / 1);
+    }
+    background-color: var(--theme_primary_color);
+    margin-left: 1.3rem;
+    outline: none;
   }
 }
-
 .appointment-list-section {
   margin-top: 9rem;
   align-items: center;
@@ -1492,6 +1514,23 @@ footer {
         flex-direction: column;
         width: 100%;
 
+        input {
+          @extend .input_component;
+        }
+        textarea {
+          margin-top: 1rem;
+          height: 10rem;
+          resize: none;
+          background-color: var(--theme_primary_color);
+          padding: 0.8rem 1rem;
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.116);
+          outline: none;
+          color: var(--theme_text_color);
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+
+        }
         h1 {
           color: var(--theme_hover_color);
           letter-spacing: 1px;
