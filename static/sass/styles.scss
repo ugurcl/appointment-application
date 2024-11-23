@@ -186,7 +186,6 @@ header {
         color: var(--theme_text_color);
         cursor: pointer;
         text-wrap: nowrap;
-
         @include breakpoint(xl) {
           font-size: 1.3rem;
         }
