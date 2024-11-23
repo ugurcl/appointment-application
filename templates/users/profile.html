@@ -1,0 +1,60 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block container %}
+<section class="profile-section">
+    <h1 class="section-title">Profilinizi Düzenleyin</h1>
+    <div class="profile-container">
+        <div class="user-profile-container">
+            <form action="">
+                <div class="profile-title">Profil Ayarları</div>
+                <div class="input-container">
+                    <label for="profile-image" class="profile-image-settings">
+                        <span>Profil Resmi</span>
+                        <img id="profile-img" src="https://www.bingol.edu.tr/Documents/file/bb_UniversityUsers/5b54bd4b-70b9-43e9-bbd8-c792e87a3ce8.jpg" alt="Profil Resmi" width="200" class="profile-image" > 
+                    </label>
+                    <input type="file" name="profile-image" id="profile-image" style="display: none;" onchange="changeProfileImage(event)" accept="image/jpeg, image/png, image/jpg">
+                    
+                </div>
+                <div class="input-container">
+                    <label for="">Kullanıcı Adınız</label>
+                    <input type="text" name="" id="">
+                </div>
+                <div class="input-container">
+                    <label for="">Adınız</label>
+                    <input type="text" name="" id="">
+                </div>
+                <div class="input-container">
+                    <label for="">Soyadınız</label>
+                    <input type="text" name="" id="">
+                </div>
+                <div class="input-container">
+                    <label for="">E-Posta Adresiniz</label>
+                    <input type="email" name="" id="">
+                </div>
+                <button>Kaydet</button>
+            </form>
+        </div>
+        <div class="user-password-container">
+            <h1 class="password-title">Parola İşlemleri</h1>
+            <form action="">
+                <div class="input-container">
+                    <label for="">Eski Parola</label>
+                    <input type="text">
+                </div>
+                <div class="input-container">
+                    <label for="">Yeni Parola</label>
+                    <input type="text">
+                </div>
+                <div class="input-container">
+                    <label for="">Yeni Parola Tekrar</label>
+                    <input type="text">
+                </div>
+                <button>Kaydet</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock container %}

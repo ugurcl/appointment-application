@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block container %}
+
+<section class="appointment-list-section">
+  <h1>Randevu Al</h1>
+  <div class="search-container">
+    <input
+      type="search"
+      name=""
+      id="search-instructor"
+      placeholder="Eğitmen Ara"
+    />
+    <select name="" id="academic-departments">
+      <option value="">Akademik Birim Seç</option>
+      <option value="">Genç Meslek</option>
+      <option value="">Genç Meslek</option>
+      <option value="">Genç Meslek</option>
+      <option value="">Genç Meslek</option>
+      <option value="">Genç Meslek</option>
+      <option value="">Genç Meslek</option>
+    </select>
+  </div>
+  <div class="appointment-container">
+    <div class="profile-card">
+      <img
+        src="https://www.bingol.edu.tr/Documents/file/bb_UniversityUsers/5b54bd4b-70b9-43e9-bbd8-c792e87a3ce8.jpg"
+        alt=""
+        id="user-profile-image"
+      />
+      <div class="user-profile">
+        <span class="user-name">Öğr. Gör. ERDEM GÖNÜLTAŞ</span>
+        <span class="user-about"
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sit nam
+          eaque ratione accusamus autem et vel nisi blanditiis rem. Animi
+          mollitia obcaecati asperiores assumenda labore accusantium similique
+          sequi autem?</span
+        >
+        <div class="user-footer">
+          <div class="user-email">
+            <i class="bi bi-envelope"></i>
+            <span>egonultas@bingol.edu.tr</span>
+          </div>
+          <div class="appointment-detail">
+            <i class="bi bi-arrow-right"></i>
+            <a href="">Randevu Al</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-card">
+      <img
+        src="https://www.bingol.edu.tr/documents/AssetFiles/MYO-Genc/50792f58-0048-492f-ac03-ae64e669f957.jpg"
+        alt=""
+        id="user-profile-image"
+      />
+      <div class="user-profile">
+        <span class="user-name">Öğr. Gör. DOYGUN DEMİROL </span>
+        <span class="user-about"
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sit nam
+          eaque ratione accusamus autem et vel nisi blanditiis rem. Animi
+          mollitia obcaecati asperiores assumenda labore accusantium similique
+          sequi autem?</span
+        >
+        <div class="user-footer">
+          <div class="user-email">
+            <i class="bi bi-envelope"></i>
+            <span> ddemirol@bingol.edu.tr</span>
+          </div>
+          <div class="appointment-detail">
+            <i class="bi bi-arrow-right"></i>
+            <a href="">Randevu Al</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="" class="load-more">Daha Fazla</a>
+</section>
+
+{% endblock container %}

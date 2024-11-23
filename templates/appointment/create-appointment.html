@@ -1,0 +1,127 @@
+{% extends "base.html" %} {% block container %}
+<section class="create-appointment">
+  <div class="create-appointment-title">Randevu Oluştur</div>
+
+  <form action="">
+    <div class="input-container">
+      <label for="">Randevu Tarihi</label>
+      <input type="text" id="date-picker" />
+    </div>
+    <div class="input-container">
+      <label for="">Randevu Saati</label>
+      <input type="time" />
+    </div>
+    <div class="input-container">
+      <label for="">Randevu Durumu</label>
+
+      <input
+        type="checkbox"
+        title="Seçili olduğunda kullanıcı randevu alabilir, seçilmediğinde kullanıcı randevu alamaz"
+      />
+    </div>
+    <button>Randevu Oluştur</button>
+  </form>
+</section>
+<section class="appointment-user-section">
+  <span class="appointment-title">Randevularınız</span>
+
+  <div class="table-container">
+    <table class="appointment-table">
+      <thead>
+        <tr>
+          <th>Eğitmen</th>
+          <th>Randevu Alan</th>
+          <th>Randevu Durumu</th>
+          <th>Randevu Tarihi</th>
+          <th>Randevuyu İptal Et</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Doygun DEMİROL</td>
+          <td>Uğur c4lıskan</td>
+          <td class="success_text">Onaylandı</td>
+          <td>12.04.2024 10:11</td>
+          <td>
+            <a href="">Randevuyu iptal et</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Doygun DEMİROL</td>
+          <td>Uğur c4lıskan</td>
+          <td>randevu alındı</td>
+          <td>12.04.2024 10:11</td>
+          <td>
+            <a href="#">Randevuyu iptal et</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Doygun DEMİROL</td>
+          <td>Uğur c4lıskan</td>
+          <td class="success_text">Onaylandı</td>
+          <td>12.04.2024 10:11</td>
+          <td>
+            <a href="#">Randevuyu iptal et</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Doygun DEMİROL</td>
+          <td>Uğur c4lıskan</td>
+          <td>randevu alındı</td>
+          <td>12.04.2024 10:11</td>
+          <td>
+            <a href="#">Randevuyu iptal et</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Doygun DEMİROL</td>
+          <td>Uğur c4lıskan</td>
+          <td>randevu alındı</td>
+          <td>12.04.2024 10:11</td>
+          <td>
+            <a href="#">Randevuyu iptal et</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Doygun DEMİROL</td>
+          <td>Uğur c4lıskan</td>
+          <td>randevu alındı</td>
+          <td>12.04.2024 10:11</td>
+          <td>
+            <a href="#">Randevuyu iptal et</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Doygun DEMİROL</td>
+          <td>Uğur c4lıskan</td>
+          <td class="success_text">Onaylandı</td>
+          <td>12.04.2024 10:11</td>
+          <td>
+            <a href="#">Randevuyu iptal et</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Doygun DEMİROL</td>
+          <td>Uğur c4lıskan</td>
+          <td>randevu alındı</td>
+          <td>12.04.2024 10:11</td>
+          <td>
+            <a href="#">Randevuyu iptal et</a>
+          </td>
+        </tr>
+        <tr>
+          <td>Doygun DEMİROL</td>
+          <td>Uğur c4lıskan</td>
+          <td>randevu alındı</td>
+          <td>12.04.2024 10:11</td>
+          <td>
+            <a href="#">Randevuyu iptal et</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="load-more-appointments">Daha eski randevular</button>
+</section>
+
+{% endblock container %}

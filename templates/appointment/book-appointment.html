@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% block container %}
+<section class="book-appointment-section">
+  <h1 class="appointment-title">Randevu Al</h1>
+
+  <div class="appointment-container">
+    <div class="profile">
+      <img
+        src="https://www.bingol.edu.tr/Documents/file/bb_UniversityUsers/5b54bd4b-70b9-43e9-bbd8-c792e87a3ce8.jpg"
+        alt=""
+      />
+      <div class="profile-container">
+        <h1 class="profile-name">Öğr. Gör. ERDEM GÖNÜLTAŞ</h1>
+        <span class="about"
+          >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima
+          impedit possimus eaque aliquid! Magnam illum ipsum reiciendis
+          doloremque ipsa obcaecati repudiandae quia consectetur accusamus,
+          vitae animi, ratione, aut cumque nam. lo0rem Lorem ipsum, dolor sit
+          amet consectetur adipisicing elit. Omnis quasi asperiores sunt
+          voluptas hic ex dolores enim illum sint dicta explicabo, eos
+          cupiditate saepe eum magnam obcaecati dignissimos accusamus
+          perferendis.
+        </span>
+        <div class="profile-contact-div">
+          <i class="fas fa-envelope"></i>
+          <span>egonultas@bingol.edu.tr</span>
+        </div>
+      </div>
+    </div>
+    <div class="book-appointment-container">
+      <form action="">
+        <h1>Uygun Randevu Tarihleri</h1>
+        <select class="appointment-date-select">
+          <option value="">Tarih Seçin</option>
+          <option value="">10.12.2024</option>
+          <option value="">09.11.2024</option>
+          <option value="">02.10.2024</option>
+        </select>
+        <div class="appointment-time-container">
+          <button type="button">10.00</button>
+          <button type="button">12.00</button>
+          <button type="button">09.00</button>
+          <button type="button">12.00</button>
+          <button type="button">19.00</button>
+          <button type="button">10.00</button>
+          <button type="button">12.00</button>
+          <button type="button">09.00</button>
+          <button type="button">12.00</button>
+          <button type="button">19.00</button>
+          
+        </div>
+        <input
+          type="text"
+          placeholder="Randevu Süresini Giriniz ör(1 saat)"
+          id=""
+        />
+        <textarea
+          name=""
+          id=""
+          cols="30"
+          placeholder="Randevu konusunu girin"
+        ></textarea>
+        <button type="submit" class="form-button">Randevu al</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock container %}

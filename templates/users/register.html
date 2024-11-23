@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block container %}
+
+<section class="register-section">
+  <h1 class="register-title">Kayıt Olun</h1>
+  <div class="register-container">
+    <img src="../static/images/sign-up.svg" alt="" width="400" />
+    <div class="login-right-container">
+      <h1>Başlamak İçin Hesap Oluşturun</h1>
+      <span>Kayıt Olun ve Hemen Başlayın!</span>
+
+      <form action="">
+        <div class="input-container">
+          <i class="fas fa-user"></i>
+          <input type="text" name="" id="" placeholder="Adınız" />
+        </div>
+        <div class="input-container">
+          <i class="fas fa-user"></i>
+          <input type="text" name="" id="" placeholder="Soyadınız" />
+        </div>
+        <div class="input-container">
+          <i class="fas fa-envelope"></i>
+          <input type="text" name="" id="" placeholder="E-Mail Adresiniz" />
+        </div>
+        <div class="input-container">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            id="password"
+            placeholder="Şifrenizi girin"
+            required
+          />
+        </div>
+        <button>Kayıt Ol</button>
+        <div class="form-footer">
+          <p>
+            Zaten bir hesabınız var mı?
+            <a href="login.html" class="login-link">Giriş Yapın</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock container %}
