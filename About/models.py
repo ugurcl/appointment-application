@@ -24,7 +24,7 @@ class AboutPageModel(models.Model):
 class ImageGalleryModel(models.Model):
     image = models.ImageField(
         verbose_name='Resim',
-        upload_to="upload/site/%Y/%m/%d",
+        upload_to="upload/gallery/%Y/%m/%d",
     )
     
     def __str__(self) -> str:

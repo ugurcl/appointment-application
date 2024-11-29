@@ -187,20 +187,25 @@
   <h1>Bizimle İletişime Geçin</h1>
   <div class="contact-form">
     <img src="../static/images/contact_us.svg" alt="" />
-    <form action="">
-      <input type="text" placeholder="Adınız" required />
-      <input type="text" placeholder="Soyadınız" required />
-      <input type="text" placeholder="E-Mail Adresiniz" required />
-      <input type="text" placeholder="Başlık" required />
-      <textarea
-        name=""
-        id=""
-        cols="80"
-        rows="7"
-        placeholder="Mesajınız"
-        required
-      ></textarea>
-      <button>Gönder</button>
+    <form action="{% url 'contact' %}" method="post">
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+              {{ message }}
+          </li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+        
+      {% csrf_token %}
+      {{form.name}}
+      {{form.last_name}}
+      {{form.email}}
+      {{form.title}}
+      {{form.content}}
+    
+      <button type="submit">Gönder</button>
     </form>
   </div>
 </section>

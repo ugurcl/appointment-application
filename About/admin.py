@@ -19,7 +19,7 @@ class AboutPageAdminModel(admin.ModelAdmin):
         return obj.title if len(obj.title) < 20 else obj.title[0:30]
     
     def description_format(self, obj):
-        return obj.description if len(obj.description) < 20 else obj.description[0:30]
+        return obj.description if len(obj.description) < 190 else obj.description[0:190] + '...'
 
 
     title_format.short_description = 'Başlık'

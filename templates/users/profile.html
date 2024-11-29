@@ -10,10 +10,13 @@
             <form action="">
                 <div class="profile-title">Profil Ayarları</div>
                 <div class="input-container">
-                    <label for="profile-image" class="profile-image-settings">
+                    <div class="profile-image-container">
                         <span>Profil Resmi</span>
-                        <img id="profile-img" src="https://www.bingol.edu.tr/Documents/file/bb_UniversityUsers/5b54bd4b-70b9-43e9-bbd8-c792e87a3ce8.jpg" alt="Profil Resmi" width="200" class="profile-image" > 
-                    </label>
+                        <label for="profile-image" class="profile-image-settings">
+                           
+                            <img id="profile-img" src="https://www.bingol.edu.tr/Documents/file/bb_UniversityUsers/5b54bd4b-70b9-43e9-bbd8-c792e87a3ce8.jpg" alt="Profil Resmi" width="200" class="profile-image" > 
+                        </label>
+                    </div>
                     <input type="file" name="profile-image" id="profile-image" style="display: none;" onchange="changeProfileImage(event)" accept="image/jpeg, image/png, image/jpg">
                     
                 </div>
@@ -36,6 +39,7 @@
                 <button>Kaydet</button>
             </form>
         </div>
+     
         <div class="user-password-container">
             <h1 class="password-title">Parola İşlemleri</h1>
             <form action="">

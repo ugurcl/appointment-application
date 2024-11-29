@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-940)-2qm^=rc#%qu@km6k^(&4_9@@(zm=zsb%^(bp3fp&6q-hn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cd70-178-241-18-129.ngrok-free.app','*']
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.ngrok-free.app',  # HTTPS ile başlayan ngrok-free.app adresi
+]
 
 
 # Application definition
@@ -120,7 +125,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+LOGIN_REDIRECT_URL = '/'
 
+# Eğer login_required decorator kullanıyorsanız login sayfasını belirtin
+LOGIN_URL = '/giris-yap/'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
@@ -128,6 +136,12 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT  = 587
+EMAIL_HOST_USER = 'ccaner5.py@gmail.com'
+EMAIL_HOST_PASSWORD = 'qeqq qydv hboy ujfm'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
