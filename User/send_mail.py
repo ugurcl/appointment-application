@@ -10,6 +10,18 @@ from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.utils.http import urlsafe_base64_decode
 
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        try:
+            ip = x_forwarded_for.split(',')[0].split()
+        except ValueError:
+            ip = '0.0.0.0'
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ' '.join(ip) or '0.0.0.0'
+
 def send_email_with_template(user, subject:str, message:str,  from_mail:str, link:str):
     subject = subject
     context = {

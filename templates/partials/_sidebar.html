@@ -10,9 +10,16 @@
       <ul>
         <li><a href="{% url 'index' %}">Ana Sayfa</a></li>
         <li><a href="{% url 'about' %}">Hakkımızda</a></li>
-        <li><a href="contact.html">İletişim</a></li>
+        <li><a href="{% url 'contact' %}">İletişim</a></li>
         {% if user.is_authenticated %}
         <li><a href="appointment-list.html">Randevu Al</a></li>
+        <li><a href="{% url 'profile' %}">Profil</a></li>
+        <li><a href="{% url 'password_change' %}">Şifre İşlemleri</a></li>
+        
+
+          {% if user.profile.is_verified %}    
+            <li class="navbar-links"> <a href="">Randevu Oluştur</a></li>
+          {% endif %}
         <li><a href="{% url 'logout' %}">Çıkış Yap</a></li>
 
         {% endif %}

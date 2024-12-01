@@ -575,7 +575,7 @@ body.dark .switch .bi-brightness-high {
 
       #user-profile-image {
         width: 100px;
-        height: 100%;
+        height: 90px;
         object-fit: cover;
         object-position: center;
         border-radius: 10px;
@@ -585,7 +585,7 @@ body.dark .switch .bi-brightness-high {
         @include breakpoint(lg) {
           margin-top: 0;
         }
-
+        width: 100%;
         margin-top: 12px;
         display: flex;
         align-items: start;
@@ -1653,9 +1653,12 @@ footer {
         .input-container {
           display: flex;
           width: 100%;
-          align-items: center;
-          
-
+          align-items: start;
+          flex-direction: column;
+          @include breakpoint(lg){
+            align-items: center;
+            flex-direction: row;
+          }
           label {
             margin-top: 1.2rem;
             color: var(--theme_secondary_text_color);
@@ -1671,12 +1674,29 @@ footer {
 
           input {
             @extend .input_component;
-            margin-left: 2rem;
+
+            @include breakpoint(lg){
+              margin-left: 2rem;
+              width: calc(100% / 2);
+            }
+
+            width: calc(100% / 1);
+          }
+          textarea {
+            @extend .input_component;
+            resize: none;
+            height: 300px;
+            
+            @include breakpoint(lg){
+              margin-left: 2rem;
+              width: calc(100% / 2);
+            }
           }
 
           .profile-image-container{
             display: flex;
             width: 100%;
+           
             align-items: center;
             justify-content: space-between;
             span {
@@ -1696,6 +1716,7 @@ footer {
               border-radius: 50%;
               object-fit: cover;
               object-position: center;
+              margin-left: 10rem;
             }
           }
           .profile-image-settings {

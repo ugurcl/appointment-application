@@ -3,11 +3,11 @@
     <nav class="navbar">
         <div class="navbar-left-menu">
             <img src="{% static "images/logo.jpg" %}" alt="logo" class="navbar-logo" />
-            <a href="{% url "about" %}" class="navbar-title">Randevu Otomasyonu</span>
+            <a href="{% url "index" %}" class="navbar-title">Randevu Otomasyonu</span>
         </div>
         <div class="navbar-right-menu">
             <ul class="navbar-ul">
-                <li class="navbar-links"><a href="index.html">Ana Sayfa</a></li>
+                <li class="navbar-links"><a href="{% url 'index' %}">Ana Sayfa</a></li>
                 <li class="navbar-links"><a href="{% url 'about' %}">Hakkımızda</a></li>
                 <li class="navbar-links"><a href="{% url 'contact' %}">İletişim</a></li>
 
@@ -39,6 +39,10 @@
                 <a href="{% url 'profile' %}">
                     <i class="bi bi-person"></i>
                     <span>Profil</span>
+                </a>
+                <a href="{% url 'password_change' %}">
+                    <i class="bi bi-lock"></i>
+                    <span>Şifre İşlemleri</span>
                 </a>
                 <a href="#">
                     <i class="bi bi-calendar-date"></i>

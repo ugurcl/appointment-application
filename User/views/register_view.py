@@ -2,12 +2,7 @@ from django.shortcuts import render, redirect
 from ..forms import CustomUserCreationForm
 from django.contrib import messages
 from django.views.generic import View
-from django.utils.http import urlsafe_base64_encode
-from django.utils.encoding import force_bytes
-from ..tokens import account_activation_token
-from ..send_mail import send_email_with_template
 from django.contrib.auth.models import User
-from django.utils.http import urlsafe_base64_decode
 from ..send_mail import send_activation_email
 
 
@@ -25,6 +20,7 @@ class RegisterView(View):
     def post(self, request, *args, **kwargs):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
+            
             email = form.cleaned_data.get('email')
             if User.objects.filter(email=email).exists():
                 messages.error(
@@ -41,12 +37,13 @@ class RegisterView(View):
                 message='Kayıt İşlemi Başarılı! Lütfen mailinize gelen aktivasyon linki ile hesabınızı aktif ediniz.'
             )
             return redirect(request.path)
-        messages.error(
+
+        else:
+          
+            return render(
                 request=request,
-                message='Şifreniz en az 8 karakter olmalı, kişisel bilgilerinizle benzer olmamalı, yaygın kullanılan şifrelerden biri olmamalı ve yalnızca sayılardan oluşmamalıdır.'
+                template_name=self.template_name,
+                context={'form':form}
             )
-        return render(
-            request=request,
-            template_name=self.template_name,
-            context={'form':form}
-        )
+        
+        

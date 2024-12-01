@@ -3,7 +3,8 @@ from .views import (
     LoginView,
     LogoutView,
     RegisterView,
-    ProfileView
+    ProfileView,
+    PasswordChange
 )
 from .send_mail import activate_account
 
@@ -13,5 +14,6 @@ urlpatterns = [
     path(route='cikis-yap', view=LogoutView.as_view(), name='logout'),
     path("kayit-ol/", RegisterView.as_view(), name="register"),
     path("activate/<uidb64>/<token>/", activate_account, name="activate"),
-    path(route='profil/', view=ProfileView.as_view(), name='profile')
+    path(route='profil/', view=ProfileView.as_view(), name='profile'),
+    path(route='parola-degistirme/', view=PasswordChange.as_view(), name='password_change')
 ]

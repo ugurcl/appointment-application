@@ -44,6 +44,9 @@ class LoginView(View):
             else:
                 messages.error(request, "Kullanıcı adı veya şifre hatalı! Tekrar deneyin.")
                 return redirect(request.path)
+        else:
+          
+            return redirect(request.path)
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return HttpResponseRedirect('/')

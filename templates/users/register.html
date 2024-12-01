@@ -13,11 +13,22 @@
 
       <form action="{% url 'register' %}" method="POST">
         {% csrf_token %}
+        {% if form.errors %}
+        <div class="alert alert-danger">
+            <ul>
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li class="error" style="padding: 10px; border-radius: 0;"> {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
         {% if messages %}
         <ul class="messages">
             {% for message in messages %}
             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-                {{ message }}
+                {{ message|safe }}
             </li>
             {% endfor %}
         </ul>
@@ -39,14 +50,18 @@
           <i class="fas fa-envelope"></i>
           {{form.email}}
         </div>
+       
         <div class="input-container">
           <i class="fas fa-lock"></i>
           {{form.password1}}
+        
         </div>
+       
         <div class="input-container">
           <i class="fas fa-lock"></i>
           {{form.password2}}
         </div>
+        
 
         <button type="submit">Kayıt Ol</button>
         <div class="form-footer">
