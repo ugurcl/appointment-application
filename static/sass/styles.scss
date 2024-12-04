@@ -1262,11 +1262,15 @@ footer {
   justify-content: center;
   margin-top: 4rem;
 
+
   .not-found-image {
     height: 18rem;
-
+    width: calc(100% / 3);
+    object-fit: contain;
+ 
     @include breakpoint(lg) {
-      height: 30rem;
+      height: 18rem;
+      width: calc(100% / 2);
     }
   }
 
@@ -1279,6 +1283,7 @@ footer {
       font-family: $handwirtten_font_family;
       font-size: 2.5rem;
       font-weight: 500;
+      color: red;
     }
 
     a {

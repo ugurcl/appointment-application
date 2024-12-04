@@ -29,6 +29,10 @@ class PasswordResetRequestView(FormView):
         email = form.cleaned_data.get('email')
         try:
             user = User.objects.get(email=email)
+            if not user.exist():
+                messages.error(request=self.request, message='E-Posta Adresi Bulunamadı')
+                return redirect(self.request.path)
+            
             token = default_token_generator.make_token(user)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
             reset_url = self.request.build_absolute_uri(f'{uid}/{token}/')
@@ -69,7 +73,7 @@ class PasswordResetConfirmView(FormView):
         if self.user is None or not default_token_generator.check_token(self.user, self.token):
             messages.error(self.request, "Geçersiz veya süresi dolmuş bağlantı.")
             return self.render_to_response({'valid_token': False, 'form':self.form_class})
-        # messages.error(request=request, message='Şifre sıfırlama bağlantınız geçerli. Lütfen yeni şifrenizi belirleyin.')
+        messages.error(request=request, message='Şifre sıfırlama bağlantınız geçerli. Lütfen yeni şifrenizi belirleyin.')
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):

@@ -1203,10 +1203,13 @@ footer .bottom-footer .created-by .created {
 }
 .page-not-found .not-found-image {
   height: 18rem;
+  width: 33.3333333333%;
+  object-fit: contain;
 }
 @media (min-width: 1024px) {
   .page-not-found .not-found-image {
-    height: 30rem;
+    height: 18rem;
+    width: 50%;
   }
 }
 .page-not-found .not-found-container {
@@ -1218,6 +1221,7 @@ footer .bottom-footer .created-by .created {
   font-family: "Ruthie", cursive;
   font-size: 2.5rem;
   font-weight: 500;
+  color: red;
 }
 .page-not-found .not-found-container a {
   margin-top: 1rem;

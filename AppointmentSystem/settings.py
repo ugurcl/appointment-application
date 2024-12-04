@@ -25,12 +25,8 @@ SECRET_KEY = 'django-insecure-940)-2qm^=rc#%qu@km6k^(&4_9@@(zm=zsb%^(bp3fp&6q-hn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cd70-178-241-18-129.ngrok-free.app','*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','*']
 
-
-CSRF_TRUSTED_ORIGINS = [
-    'https://*.ngrok-free.app',  # HTTPS ile başlayan ngrok-free.app adresi
-]
 
 
 # Application definition
@@ -42,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+     'whitenoise.runserver_nostatic',
 
     'About',
     'Contact',
@@ -57,6 +54,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
