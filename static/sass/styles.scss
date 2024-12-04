@@ -1650,6 +1650,7 @@ footer {
           border-bottom: 1px solid var(--theme_hover_color);
         }
 
+     
         .input-container {
           display: flex;
           width: 100%;
@@ -1658,6 +1659,15 @@ footer {
           @include breakpoint(lg){
             align-items: center;
             flex-direction: row;
+          }
+          #id_title {
+            @extend .input_component;
+            @include breakpoint(lg){
+              margin-left: 2rem;
+              width: calc(100% / 2);
+            }
+
+            width: calc(100% / 1);
           }
           label {
             margin-top: 1.2rem;
@@ -1692,6 +1702,8 @@ footer {
               width: calc(100% / 2);
             }
           }
+
+          
 
           .profile-image-container{
             display: flex;

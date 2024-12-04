@@ -10,12 +10,9 @@
       <span class="hero-title">Bingöl Üniversitesi</span>
       <span class="hero-sub-title">Randevu Otomasyonu</span>
       <span class="hero-description"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Error mollitia
-        nemo, veritatis quo doloribus porro cupiditate ipsa nisi? Culpa,
-        possimus quae. Expedita odio placeat voluptate repudiandae temporibus!
-        Reiciendis, dicta? Rerum.</span
+        >Bingöl Üniversitesi’nde öğrenciler ve akademisyenler arasında güçlü bir iletişim kurmak için buradayız! Öğrencilerin öğretim üyelerinden kolayca randevu almasını sağlayan bu platform, eğitimde erişilebilirliği ve etkileşimi artırmayı hedefliyor. Geleceğinizi inşa ederken destek almak için hemen bir randevu oluşturun!</span
       >
-      <a href="book-appointment.html">Randevu Al</a>
+      <a href="{% url 'instructor_list' %}">Randevu Al</a>
     </div>
   </div>
 </section>
@@ -38,7 +35,7 @@
         <div class="user-footer">
           <div class="user-email">
             <i class="bi bi-envelope"></i>
-            <span>egonultas@bingol.edu.tr</span>
+            <span>{{item.contact_email}}</span>
           </div>
           <div class="appointment-detail">
             <i class="bi bi-arrow-right"></i>
@@ -47,13 +44,15 @@
         </div>
       </div>
     </div>
+    {% empty %}
+      <p class="error" >Gösterilecek Veri Bulunamadı.</p>
     {% endfor %}
     
 
 
   </div>
 
-  <a href="" class="load-more">Daha Fazla</a>
+  <a href="{% url 'instructor_list' %}" class="load-more">Daha Fazla</a>
 </section>
 
 <section class="contact">

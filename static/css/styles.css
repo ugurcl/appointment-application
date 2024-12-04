@@ -77,7 +77,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-.input_component, .profile-section .profile-container .user-password-container form .input-container input, .profile-section .profile-container .user-profile-container form .input-container textarea, .profile-section .profile-container .user-profile-container form .input-container input, .book-appointment-section .appointment-container .book-appointment-container form .appointment-date-select, .book-appointment-section .appointment-container .book-appointment-container form input, .password-reset-section .password-reset-container .password-reset-right-container form .input-container input, .contact-section .contact-container .contact-right-container form input,
+.input_component, .profile-section .profile-container .user-password-container form .input-container input, .profile-section .profile-container .user-profile-container form .input-container textarea, .profile-section .profile-container .user-profile-container form .input-container input, .profile-section .profile-container .user-profile-container form .input-container #id_title, .book-appointment-section .appointment-container .book-appointment-container form .appointment-date-select, .book-appointment-section .appointment-container .book-appointment-container form input, .password-reset-section .password-reset-container .password-reset-right-container form .input-container input, .contact-section .contact-container .contact-right-container form input,
 .contact-section .contact-container .contact-right-container form textarea, .login-section .login-container .login-right-container form .input-container input, .create-appointment .login-container .login-right-container form .input-container input, .appointment-user-section .login-container .login-right-container form .input-container input, .profile-section .login-container .login-right-container form .input-container input, .book-appointment-section .login-container .login-right-container form .input-container input, .about-us-section .login-container .login-right-container form .input-container input, .about-us-section .about-container .login-right-container form .input-container input, .about-us-section .about-container .about-right-container form .input-container input, .password-reset-section .login-container .login-right-container form .input-container input, .password-reset-section .password-reset-container .login-right-container form .input-container input, .contact-section .login-container .login-right-container form .input-container input, .contact-section .contact-container .login-right-container form .input-container input, .register-section .login-container .login-right-container form .input-container input, .register-section .register-container .login-right-container form .input-container input, .contact .contact-form form input, .search-container #academic-departments, .search-container #search-instructor {
   background-color: var(--theme_primary_color);
   width: 100%;
@@ -1529,6 +1529,15 @@ footer .bottom-footer .created-by .created {
   .profile-section .profile-container .user-profile-container form .input-container {
     align-items: center;
     flex-direction: row;
+  }
+}
+.profile-section .profile-container .user-profile-container form .input-container #id_title {
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .profile-section .profile-container .user-profile-container form .input-container #id_title {
+    margin-left: 2rem;
+    width: 50%;
   }
 }
 .profile-section .profile-container .user-profile-container form .input-container label {

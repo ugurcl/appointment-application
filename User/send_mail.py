@@ -30,9 +30,7 @@ def send_email_with_template(user, subject:str, message:str,  from_mail:str, lin
         'message': message,
         'link':link
     }
-    
 
-     
     html_message = render_to_string(template_name='users/mail_template.html', context=context)
     
 

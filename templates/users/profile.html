@@ -50,14 +50,21 @@
                     <label for="">E-Posta Adresiniz</label>
                     {{user_form.email}}
                 </div>
+                {% if user.profile.is_verified %}
                 <div class="input-container">
                     <label for="">İletişim E-Posta Adresiniz</label>
                     {{profile_form.contact_email}}
                 </div>
+                <div class="input-container title">
+                    <label for="">Başlık</label>
+                    {{profile_form.title}}
+                </div>
+                {% endif %}
                 <div class="input-container">
                     <label for="">Biyografiniz</label>
                     {{profile_form.bio}}
                 </div>
+               
                 <button type="submit">Kaydet</button>
             </form>
         </div>

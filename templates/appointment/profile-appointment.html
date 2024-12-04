@@ -1,7 +1,4 @@
-{% extends "base.html" %}
-
-{% load static %}
-{% block container %}
+{% extends "base.html" %} {% load static %} {% block container %}
 
 <section class="appointment-list-section">
   <h1>Randevu Al</h1>
@@ -14,33 +11,25 @@
     />
     <select name="" id="academic-departments">
       <option value="">Akademik Birim Seç</option>
-      <option value="">Genç Meslek</option>
-      <option value="">Genç Meslek</option>
-      <option value="">Genç Meslek</option>
-      <option value="">Genç Meslek</option>
-      <option value="">Genç Meslek</option>
-      <option value="">Genç Meslek</option>
+      {% for item in institution_list %}
+      <option value="{{item.id}}">{{item.name}}</option>
+      {% endfor %}
     </select>
   </div>
   <div class="appointment-container">
+    {% for item in users %}
+
     <div class="profile-card">
-      <img
-        src="https://www.bingol.edu.tr/Documents/file/bb_UniversityUsers/5b54bd4b-70b9-43e9-bbd8-c792e87a3ce8.jpg"
-        alt=""
-        id="user-profile-image"
-      />
+      <img src="{{item.profile_picture.url}}" alt="" id="user-profile-image" />
       <div class="user-profile">
-        <span class="user-name">Öğr. Gör. ERDEM GÖNÜLTAŞ</span>
-        <span class="user-about"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sit nam
-          eaque ratione accusamus autem et vel nisi blanditiis rem. Animi
-          mollitia obcaecati asperiores assumenda labore accusantium similique
-          sequi autem?</span
+        <span class="user-name"
+          >{{item.title}} {{item.user.first_name}} {{item.user.last_name}}</span
         >
+        <span class="user-about">{{item.bio}}</span>
         <div class="user-footer">
           <div class="user-email">
             <i class="bi bi-envelope"></i>
-            <span>egonultas@bingol.edu.tr</span>
+            <span>{{item.contact_email}}</span>
           </div>
           <div class="appointment-detail">
             <i class="bi bi-arrow-right"></i>
@@ -49,35 +38,151 @@
         </div>
       </div>
     </div>
-    <div class="profile-card">
-      <img
-        src="https://www.bingol.edu.tr/documents/AssetFiles/MYO-Genc/50792f58-0048-492f-ac03-ae64e669f957.jpg"
-        alt=""
-        id="user-profile-image"
-      />
-      <div class="user-profile">
-        <span class="user-name">Öğr. Gör. DOYGUN DEMİROL </span>
-        <span class="user-about"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt sit nam
-          eaque ratione accusamus autem et vel nisi blanditiis rem. Animi
-          mollitia obcaecati asperiores assumenda labore accusantium similique
-          sequi autem?</span
-        >
-        <div class="user-footer">
-          <div class="user-email">
-            <i class="bi bi-envelope"></i>
-            <span> ddemirol@bingol.edu.tr</span>
-          </div>
-          <div class="appointment-detail">
-            <i class="bi bi-arrow-right"></i>
-            <a href="">Randevu Al</a>
-          </div>
-        </div>
-      </div>
-    </div>
+
+    {% endfor %}
   </div>
 
-  <a href="" class="load-more">Daha Fazla</a>
+  <button class="load-more" type="button">Daha Fazla</button>
 </section>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#search-instructor").keyup(function () {
+      let search = $(this).val();
+  
+      $.ajax({
+        url: '{% url "search" %}',
+        data: {
+          search: search,
+        },
+
+        success: function (response) {
+          var html = ''
+          $(".appointment-container").empty();
+            response.data.forEach(function(item){
+              html += `
+<div class="profile-card">
+      <img
+        src="${item.profile_picture}"
+        alt=""
+        id="user-profile-image"
+      />
+      <div class="user-profile">
+        <span class="user-name">${item.title} ${item.first_name} ${item.last_name}</span>
+        <span class="user-about"
+          >${item.bio}</span
+        >
+        <div class="user-footer">
+          <div class="user-email">
+            <i class="bi bi-envelope"></i>
+            <span>${item.contact_email}</span>
+          </div>
+          <div class="appointment-detail">
+            <i class="bi bi-arrow-right"></i>
+            <a href="">Randevu Al</a>
+          </div>
+        </div>
+      </div>
+    </div>              
+`;
+            })
+            
+            $(".appointment-container").append(html);
+          }
+        
+      });
+    });
+    $("#academic-departments").change(function () {
+      let data = $(this).val();
+
+      $.ajax({
+        url: "{% url 'search_institution' %}",
+        data: {
+          value: data,
+        },
+        type: "GET",
+
+        success: function (response) {
+          $(".appointment-container").empty();
+          if (response.data != "") {
+            response.data.forEach(function (item) {
+              var html = `
+<div class="profile-card">
+      <img
+        src="${item.profile_picture}"
+        alt=""
+        id="user-profile-image"
+      />
+      <div class="user-profile">
+        <span class="user-name">${item.title} ${item.first_name} ${item.last_name}</span>
+        <span class="user-about"
+          >${item.bio}</span
+        >
+        <div class="user-footer">
+          <div class="user-email">
+            <i class="bi bi-envelope"></i>
+            <span>${item.contact_email}</span>
+          </div>
+          <div class="appointment-detail">
+            <i class="bi bi-arrow-right"></i>
+            <a href="">Randevu Al</a>
+          </div>
+        </div>
+      </div>
+    </div>              
+`;
+
+              $(".appointment-container").append(html);
+            });
+          }
+        },
+      });
+    });
+    $(".load-more").click(function () {
+      var offset = $(this).data("offset");
+      $.ajax({
+        url: "{% url 'load_more' %}",
+        data: {
+          offset: offset,
+        },
+        success: function (response) {
+          if (response.content != '') {
+            response.content.forEach(function (item) {
+              var postHtml = `
+<div class="profile-card">
+      <img
+        src="${item.profile_picture}"
+        alt=""
+        id="user-profile-image"
+      />
+      <div class="user-profile">
+        <span class="user-name">${item.title} ${item.first_name} ${item.last_name}</span>
+        <span class="user-about"
+          >${item.bio}</span
+        >
+        <div class="user-footer">
+          <div class="user-email">
+            <i class="bi bi-envelope"></i>
+            <span>${item.contact_email}</span>
+          </div>
+          <div class="appointment-detail">
+            <i class="bi bi-arrow-right"></i>
+            <a href="">Randevu Al</a>
+          </div>
+        </div>
+      </div>
+    </div>
+`;
+              $(".appointment-container").append(postHtml);
+            });
+            $(".load-more").data("offset", offset + 5);
+          } else {
+            $(".load-more").hide()
+          }
+        },
+      });
+    });
+  });
+</script>
 {% endblock container %}

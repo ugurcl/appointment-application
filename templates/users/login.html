@@ -30,10 +30,9 @@
         </div>
         <button type="submit">Giriş Yap</button>
         <div class="form-footer">
-          <a href="password-reset.html" class="forgot-password"
+          <a href="{% url 'password_reset_request' %}" class="forgot-password"
             >Şifrenizi sıfırlamak için tıklayın</a
           >
-
           <a href="{% url 'register' %}" class="register"
             >Hesabınız yok mu? Kayıt olun</a
           >

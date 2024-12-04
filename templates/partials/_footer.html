@@ -6,16 +6,18 @@
       <img src="{% static 'images/logo.jpg' %}" alt="" />
       <span class="title">Bingöl Üniversitesi</span>
       <span class="description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, qui
-        deserunt numquam, totam error magnam dolor neque quo repellendus, ipsum
-        quasi enim inventore aliquid modi porro eius maxime impedit sed.
+        Bingöl Üniversitesi, 29 Mayıs 2007 tarihinde Resmi Gazete'de yayımlanan kanunla kurulan 17 yeni üniversiteden biridir. Kuruluşundan bu yana fakülte, yüksekokul, enstitü ve meslek yüksekokullarıyla hızlı bir gelişim göstermiştir.
+
+        Günümüzde 10 fakülte, 1 yüksekokul, 5 enstitü, 6 meslek yüksekokulu, 21 araştırma merkezi ve 1 laboratuvarıyla eğitim-öğretim faaliyetlerini sürdürmekte olan üniversitemizde; 190 programda toplam 16.518 öğrenciye eğitim verilmektedir.
       </span>
     </div>
     <div class="middle-menu">
       <ul>
         <li><a href="{% url 'index' %}">Ana Sayfa</a></li>
         <li><a href="{% url 'about' %}">Hakkımızda</a></li>
-        <li><a href="">Randevu Al</a></li>
+        {% if  user.is_authenticated %}
+          <li><a href="">Randevu Al</a></li>
+        {% endif %}
         <li><a href="{% url 'contact' %}">İletişim</a></li>
       </ul>
     </div>

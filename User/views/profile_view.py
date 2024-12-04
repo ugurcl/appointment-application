@@ -40,6 +40,12 @@ class ProfileView(LoginRequiredMixin,View):
             if user_form.is_valid() and profile_form.is_valid():
                 with transaction.atomic():
                     email = user_form.cleaned_data.get('email')
+                    title = profile_form.cleaned_data.get('instructor')
+
+                    user_profile = request.user.profile
+
+                    user_profile.title = title
+
                     user_exists = User.objects.filter(email=email).exclude(id=request.user.id).exists()
                     if user_exists:
                         messages.error(request, 'E-Posta adresi onaylanmadı, tekrar deneyin')
@@ -78,7 +84,7 @@ class PasswordChange(LoginRequiredMixin, View):
             send_email_with_template(
                 user=request.user,
                 subject='Şifre Değiştirme işlemi',
-                 message=(
+                message=(
                         'Merhaba, \n\n'
                         f'Parolanız başarıyla güncellendi. Ip Adresi: {get_client_ip(request=request)} Eğer bu işlemi siz yapmadıysanız, '
                         'lütfen hemen bizimle iletişime geçin.\n\n'

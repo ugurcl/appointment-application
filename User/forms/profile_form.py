@@ -1,11 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
-from ..models import UserProfile
+from ..models import UserProfile, TitleModel
 from django.core.validators import RegexValidator
 from django.core.validators import RegexValidator, MinLengthValidator, MaxLengthValidator
-from django.core.exceptions import ValidationError
-from PIL import Image
-import imghdr
+
 
 class UserModelForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -72,6 +70,11 @@ class UserModelForm(forms.ModelForm):
 
 
 class ProfileModelForm(forms.ModelForm):
+    title = forms.ModelChoiceField(
+        queryset=TitleModel.objects.all(),
+        required=False,
+        label="Bölüm / Fakülte"
+    )
     bio = forms.CharField(
         required=False,
         widget=forms.Textarea(),
@@ -84,7 +87,7 @@ class ProfileModelForm(forms.ModelForm):
         }
     )
     contact_email = forms.EmailField(
-        
+        required=False,
         widget=forms.EmailInput(attrs={'placeholder': 'İletişim E-posta adresiniz'}),
         validators=[
             RegexValidator(
@@ -109,5 +112,5 @@ class ProfileModelForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ['bio', 'profile_picture','contact_email']
+        fields = ['bio', 'profile_picture','contact_email','title']
        

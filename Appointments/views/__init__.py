@@ -1,1 +1,2 @@
 from .index_view import IndexView
+from .instructor_list_view import InstructorListView, LoadMoreContentView,SearchInstitution,Search

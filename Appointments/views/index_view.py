@@ -8,7 +8,7 @@ from User.models import UserProfile
 class IndexView(View):
     template_name = 'app/index.html'
     def get(self, request, *args, **kwargs):
-        profiles = UserProfile.objects.filter(is_verified=True)
+        profiles = UserProfile.objects.filter(is_verified=True)[:20]
         contact_form = ContactForm()
         return render(
             request=request,
