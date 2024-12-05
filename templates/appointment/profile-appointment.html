@@ -27,10 +27,13 @@
         >
         <span class="user-about">{{item.bio}}</span>
         <div class="user-footer">
+          {% if item.contact_email is not None %}
+            
           <div class="user-email">
             <i class="bi bi-envelope"></i>
             <span>{{item.contact_email}}</span>
           </div>
+          {% endif %}
           <div class="appointment-detail">
             <i class="bi bi-arrow-right"></i>
             <a href="">Randevu Al</a>
@@ -58,6 +61,7 @@
         },
 
         success: function (response) {
+          console.log(response)
           var html = ''
           $(".appointment-container").empty();
             response.data.forEach(function(item){

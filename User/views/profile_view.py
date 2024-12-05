@@ -57,11 +57,20 @@ class ProfileView(LoginRequiredMixin,View):
 
 
             else:
-                messages.error(request, f"Girdiğiniz bilgiler doğrulanamadı. Lütfen bilgilerinizi kontrol ederek tekrar deneyiniz.")
+                for field, errors in user_form.errors.items():
+                    for error in errors:
+                        messages.error(request, f"{error}")
+
+                for field, errors in profile_form.errors.items():
+                    for error in errors:
+                        messages.error(request, f"{error}")
+
+                messages.error(request, "Girdiğiniz bilgiler doğrulanamadı. Lütfen bilgilerinizi kontrol ederek tekrar deneyiniz.")
+
                 
 
         except Exception as e:
-            messages.error(request, f"Hata oluştu lütfen daha sonra tekrar deneyin.")
+            messages.error(request, f"Hata oluştu lütfen daha sonra tekrar deneyin. {e}")
 
 
         return redirect(request.path)

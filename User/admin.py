@@ -5,7 +5,7 @@ from django.utils.html import mark_safe
 @admin.register(UserProfile)
 class UserProfileAdminModel(admin.ModelAdmin):
     list_display = ('id','user__username','user__first_name','user__last_name','user__email','is_active','is_verified','profile_image_format','profile_bio_format')
-    search_fields = ('user__username',)
+    search_fields = ('user__username','user__first_name','user__last_name')
     list_filter = ('user__username','title','institution')
     list_editable = ('is_verified','is_active', )
     readonly_fields = ('slug',)

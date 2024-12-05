@@ -357,11 +357,14 @@ body.dark .switch .bi-brightness-high {
           margin-bottom: 1rem;
           padding: 0.3rem;
           cursor: pointer;
+          width: 100%;
 
           a {
             font-family: $font_family;
             color: var(--theme_text_color);
             font-weight: 400;
+            display: block;
+            width: 100%;
           }
 
           &:hover {

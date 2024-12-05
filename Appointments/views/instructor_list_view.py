@@ -8,61 +8,69 @@ from User.models import UserProfile
 from django.urls import reverse
 
 class Search(View):
+
    def get(self, request, *args, **kwargs):
-      search = request.GET.get('search','')
-      if search:
+      search = request.GET.get('search', '').strip()
+
+      if not search:
+         users = UserProfile.objects.filter(is_verified=True)
+      else:
          search_parts = search.split()
-         query =  \
-            Q(user__first_name__icontains=search_parts[0]) | \
-            Q(user__last_name__icontains=search_parts[0]) | \
-            Q(bio__icontains=search_parts[0])
+         
+         query = Q()
+
+         query |= Q(user__first_name__icontains=search_parts[0]) | \
+                  Q(user__last_name__icontains=search_parts[0]) | \
+                  Q(bio__icontains=search_parts[0]) 
 
          for part in search_parts[1:]:
-            query &= (
+               query &= (
                   Q(user__first_name__icontains=part) |
                   Q(user__last_name__icontains=part) |
                   Q(bio__icontains=part)
-            )
-    
+               )
+
+         query &= Q(is_verified=True)
          users = UserProfile.objects.filter(query)
-      else:
-         users = UserProfile.objects.all()
 
-      content_data = [
-            {
-               "title": _.title.title if _.title.title else '',
-               "first_name": _.user.first_name if _.user.first_name else '',
-               "last_name": _.user.last_name if _.user.last_name else '',
-               'bio': _.bio if _.bio else '',
-               'profile_picture': _.profile_picture.url if _.profile_picture else '',
-               'contact_email': _.contact_email if _.contact_email else '',
+      # Kullanıcı verilerini hazırlıyoruz
+      content_data = []
+      for user in users:
+         user_data = {
+               "title": user.title.title if user.title and user.title.title else '',
+               "first_name": user.user.first_name if user.user and user.user.first_name else '',
+               "last_name": user.user.last_name if user.user and user.user.last_name else '',
+               'bio': user.bio if user.bio else '',
+               'profile_picture': user.profile_picture.url if user.profile_picture else '',
+               'contact_email': user.contact_email if user.contact_email else '',
+         }
+         content_data.append(user_data)
 
-
-            } for _ in users]
-      print(content_data)
-      return JsonResponse({'data': content_data})
-   
+      try:
+         return JsonResponse({'data': content_data}, status=200)
+      except Exception as e:
+         return JsonResponse({'error': str(e)}, status=500)
 
 class SearchInstitution(View):
    def get(self, request, *args, **kwargs):
-      value = request.GET.get('value','') 
-      if value != '':
-         data = UserProfile.objects.filter(institution=value)
-      else:
-         data = UserProfile.objects.all()
-      content_data = [
+        value = request.GET.get('value', '').strip()
+
+        if not value:
+            data = UserProfile.objects.filter(is_verified=True)
+        else:
+            data = UserProfile.objects.filter(institution=value, is_verified=True) 
+        content_data = [
             {
-               "title": _.title.title if _.title.title else '',
-               "first_name": _.user.first_name if _.user.first_name else '',
-               "last_name": _.user.last_name if _.user.last_name else '',
-               'bio': _.bio if _.bio else '',
-               'profile_picture': _.profile_picture.url if _.profile_picture else '',
-               'contact_email': _.contact_email if _.contact_email else '',
+                "title": _.title.title if _.title and _.title.title else '',
+                "first_name": _.user.first_name if _.user and _.user.first_name else '',
+                "last_name": _.user.last_name if _.user and _.user.last_name else '',
+                'bio': _.bio if _.bio else '',
+                'profile_picture': _.profile_picture.url if _.profile_picture else '',
+                'contact_email': _.contact_email if _.contact_email else '',
+            } for _ in data
+        ]
 
-
-            } for _ in data]
-
-      return JsonResponse({'data': content_data})
+        return JsonResponse({'data': content_data})
       
       
    

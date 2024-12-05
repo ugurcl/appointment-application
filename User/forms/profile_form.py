@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from ..models import UserProfile, TitleModel
 from django.core.validators import RegexValidator
 from django.core.validators import RegexValidator, MinLengthValidator, MaxLengthValidator
+from django.core.validators import FileExtensionValidator
 
 
 class UserModelForm(forms.ModelForm):
@@ -14,7 +15,7 @@ class UserModelForm(forms.ModelForm):
         widget=forms.TextInput(),
         validators=[
             RegexValidator(
-                regex=r'^[a-zA-Z0-9._-]+$',
+                regex=r'^[a-zA-ZçÇğĞıİşŞüÜöÖ\s\-]+$',
                 message="Username can only contain letters, digits, underscores, and hyphens."
             ),
             MinLengthValidator(4,message='Kullanıcı adı minimum 4 karakter olmak zorundadır.'), 
@@ -26,7 +27,10 @@ class UserModelForm(forms.ModelForm):
     first_name = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder': 'First Name'}),
         validators=[
-           
+            RegexValidator(
+                regex=r'^[a-zA-ZçÇğĞıİşŞüÜöÖ\s\-]+$',
+                message="Adınız yanlızca harf, boşluk ve tire içerebilir ve minimum 3 karakter olmak zorundadır."
+            ),
             MinLengthValidator(2), 
             MaxLengthValidator(50),
         ]
@@ -37,7 +41,7 @@ class UserModelForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'Last Name'}),
         validators=[
             RegexValidator(
-                regex=r'^[a-zA-Z\s\-]+$',
+                regex=r'^[a-zA-ZçÇğĞıİşŞüÜöÖ\s\-]+$',
                 message="Soyadınız yanlızca harf, boşluk ve tire içerebilir ve minimum 3 karakter olmak zorundadır."
             ),
             MinLengthValidator(3, message="Soyad minimum 3 karakter olmak zorundadır."), 
@@ -98,7 +102,14 @@ class ProfileModelForm(forms.ModelForm):
     )
 
     profile_picture = forms.ImageField(
+        error_messages = {
+        "invalid_image": 
+             "Geçerli bir resim yükleyin. Yüklediğiniz dosya ya resim değil ya da bozuk bir resim dosyası.",
+           
+        
+        },
         widget=forms.FileInput(
+            
             attrs={
                 'id': 'profile-image',
                 'style': 'display:none',
@@ -106,8 +117,12 @@ class ProfileModelForm(forms.ModelForm):
                 'accept': 'image/jpeg, image/png, image/jpg',
             }
         ),
+         validators=[
+            FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png'])
+        ]
        
     )
+
 
 
     class Meta:
