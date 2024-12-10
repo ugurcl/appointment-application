@@ -40,6 +40,11 @@
   font-family: $font_family;
   color:var(--theme_success_text_color) !important ;
 }
+
+.error_text{
+  font-family: $font_family;
+  color:var(--theme_error_color) !important ;
+}
 .active {
   color: var(--theme_hover_color) !important;
 }

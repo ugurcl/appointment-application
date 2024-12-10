@@ -13,6 +13,8 @@
       </div>
     </div>
 
+    {% if images %}
+      
     <div class="slider-container">
       <h1 class="title">Resim Galerisi</h1>
       <div class="slider">
@@ -23,6 +25,7 @@
       <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
       <button class="next" onclick="moveSlide(1)">&#10095;</button>
     </div>
+    {% endif %}
   </section>
 
 {% endblock container %}

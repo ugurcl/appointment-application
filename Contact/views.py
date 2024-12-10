@@ -3,6 +3,7 @@ from .models import ContactModel
 from django.views.generic import View
 from .forms import ContactForm
 from django.contrib import messages
+from Appointments.models import AppointmentCreation
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -20,6 +21,8 @@ class ContactViews(View):
    
     def get(self, request, *args, **kwargs):
         form = ContactForm()
+        _ = AppointmentCreation.objects.first().staff_member.bio
+        print(_)
         return render(
             request=request,
             template_name=self.template_name,
@@ -40,7 +43,8 @@ class ContactViews(View):
                 message='Mesajınız başarıyla iletildi'
             )
             return redirect(referer)
-
+        else:
+            messages.error(request=request, message='Mesajınız iletilemedi! Lütfen tekrar deneyin')
         form = ContactForm(request.POST)
         return render(
             request=request,

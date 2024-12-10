@@ -14,7 +14,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         count = kwargs['count']
         for i in range(count):
-            username = f"user_{i+1+int(random.random()*100)}"
+            username = fake.user_name()
             email = fake.email()
             password = "default_password123"
             first_name = fake.first_name()

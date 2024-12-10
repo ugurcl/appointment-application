@@ -35,16 +35,18 @@ class Search(View):
 
       # Kullanıcı verilerini hazırlıyoruz
       content_data = []
-      for user in users:
-         user_data = {
-               "title": user.title.title if user.title and user.title.title else '',
-               "first_name": user.user.first_name if user.user and user.user.first_name else '',
-               "last_name": user.user.last_name if user.user and user.user.last_name else '',
-               'bio': user.bio if user.bio else '',
-               'profile_picture': user.profile_picture.url if user.profile_picture else '',
-               'contact_email': user.contact_email if user.contact_email else '',
-         }
-         content_data.append(user_data)
+      if users:
+         for user in users:
+            user_data = {
+                  'slug': user.slug if user.slug and user.slug else '',
+                  "title": user.title.title if user.title and user.title.title else '',
+                  "first_name": user.user.first_name if user.user and user.user.first_name else '',
+                  "last_name": user.user.last_name if user.user and user.user.last_name else '',
+                  'bio': user.bio if user.bio else '',
+                  'profile_picture': user.profile_picture.url if user.profile_picture else '',
+                  'contact_email': user.contact_email if user.contact_email else '',
+            }
+            content_data.append(user_data)
 
       try:
          return JsonResponse({'data': content_data}, status=200)

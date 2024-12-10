@@ -5,9 +5,14 @@ from .models import AboutPageModel, ImageGalleryModel
 class IndexView(TemplateView):
     template_name = 'app/about.html'
     def get_context_data(self, **kwargs):
+
         context = super().get_context_data(**kwargs)
-        context['about_title']  = AboutPageModel.objects.first().title
-        context['about_description'] = AboutPageModel.objects.first().description.split('\n')
-        context['images'] = ImageGalleryModel.objects.all()
+        if AboutPageModel.objects.count() > 0:
+            context['about_title']  = AboutPageModel.objects.first().title 
+            context['about_description'] = AboutPageModel.objects.first().description.split ('\n') 
+        else:
+            context['about_title']  = "Başlık Yok"
+            context['about_description'] = ["Açıklama yok."]
+        context['images'] = ImageGalleryModel.objects.all() or None
         
         return context

@@ -480,17 +480,17 @@ body.dark .switch .bi-brightness-high {
   justify-content: space-between;
   width: calc(100% / 1.1);
 
-  @include breakpoint(lg){
+  @include breakpoint(lg) {
     width: calc(100% / 1.8);
   }
-  
+
   #search-instructor {
     width: 100%;
     margin-top: 1rem;
     @extend .input_component;
     width: calc(100% / 1);
     cursor: pointer;
-  
+
     @include breakpoint(lg) {
       width: calc(100% / 1);
     }
@@ -499,7 +499,7 @@ body.dark .switch .bi-brightness-high {
   #academic-departments {
     @extend .input_component;
     width: calc(100% / 2);
-    @include breakpoint(lg){
+    @include breakpoint(lg) {
       width: calc(100% / 1);
     }
     background-color: var(--theme_primary_color);
@@ -1265,12 +1265,11 @@ footer {
   justify-content: center;
   margin-top: 4rem;
 
-
   .not-found-image {
     height: 18rem;
     width: calc(100% / 3);
     object-fit: contain;
- 
+
     @include breakpoint(lg) {
       height: 18rem;
       width: calc(100% / 2);
@@ -1439,6 +1438,7 @@ footer {
     flex-direction: column;
     padding: 1rem;
     align-items: center;
+    width: 100%;
 
     @include breakpoint(lg) {
       padding: 4rem;
@@ -1454,10 +1454,10 @@ footer {
       }
 
       img {
-        width: 100%;
+        width: 10%;
 
         @include breakpoint(lg) {
-          width: 14rem;
+          min-width: calc(100% / 8);
         }
 
         height: 12rem;
@@ -1469,11 +1469,13 @@ footer {
         display: flex;
         flex-direction: column;
         margin-left: 0;
+
         margin-top: 1rem;
 
         @include breakpoint(lg) {
           margin-left: 1rem;
           margin-top: 0;
+          width: 100%;
         }
 
         .profile-name {
@@ -1491,6 +1493,7 @@ footer {
           font-weight: 500;
           margin-top: 1rem;
           letter-spacing: 0.4px;
+          min-width: calc(100% / 2);
         }
 
         .profile-contact-div {
@@ -1535,8 +1538,6 @@ footer {
           outline: none;
           color: var(--theme_text_color);
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-
         }
         h1 {
           color: var(--theme_hover_color);
@@ -1565,7 +1566,30 @@ footer {
             }
           }
         }
+        .appointment-time-select {
+          @extend .title_component;
+          @extend .input_component;
 
+          border: 1px solid rgba(255, 255, 255, 0.116);
+          padding: 1.3rem;
+          cursor: pointer;
+          appearance: none;
+          font-size: 1rem !important;
+
+          option {
+            color: var(--theme_text_color);
+            font-family: $font_family;
+            font-size: 1.1rem;
+
+            &:focus {
+              color: red;
+            }
+          }
+        }
+
+        select {
+          @extend .appointment-time-select;
+        }
         .appointment-time-container {
           display: flex;
           flex-wrap: wrap;
@@ -1587,7 +1611,11 @@ footer {
             }
           }
         }
-
+        span {
+          color: var(--theme_text_color);
+          margin-top: 0.5rem;
+          font-family: $font_family;
+        }
         .form-button {
           border: 1px solid var(--theme_hover_color);
           border-radius: 4px;
@@ -1658,19 +1686,18 @@ footer {
           border-bottom: 1px solid var(--theme_hover_color);
         }
 
-     
         .input-container {
           display: flex;
           width: 100%;
           align-items: start;
           flex-direction: column;
-          @include breakpoint(lg){
+          @include breakpoint(lg) {
             align-items: center;
             flex-direction: row;
           }
           #id_title {
             @extend .input_component;
-            @include breakpoint(lg){
+            @include breakpoint(lg) {
               margin-left: 2rem;
               width: calc(100% / 2);
             }
@@ -1693,7 +1720,7 @@ footer {
           input {
             @extend .input_component;
 
-            @include breakpoint(lg){
+            @include breakpoint(lg) {
               margin-left: 2rem;
               width: calc(100% / 2);
             }
@@ -1704,19 +1731,17 @@ footer {
             @extend .input_component;
             resize: none;
             height: 300px;
-            
-            @include breakpoint(lg){
+
+            @include breakpoint(lg) {
               margin-left: 2rem;
               width: calc(100% / 2);
             }
           }
 
-          
-
-          .profile-image-container{
+          .profile-image-container {
             display: flex;
             width: 100%;
-           
+
             align-items: center;
             justify-content: space-between;
             span {
@@ -1742,10 +1767,9 @@ footer {
           .profile-image-settings {
             display: flex;
             align-items: center;
-            
+
             width: fit-content;
             text-align: center;
-         
           }
         }
 
@@ -1920,6 +1944,16 @@ footer {
           font-size: 0.8rem;
           text-transform: capitalize;
         }
+        select {
+          background-color: var(--theme_background_color);
+          color: var(--theme_text_color);
+          padding: 10px;
+        }
+        button {
+          background-color: var(--theme_background_color);
+          color: var(--theme_text_color);
+          padding: 10px;
+        }
       }
 
       th {
@@ -1951,9 +1985,6 @@ footer {
   }
 }
 
-
-
-
 .create-appointment {
   @extend .login-section;
 
@@ -1967,49 +1998,48 @@ footer {
     align-items: start;
     margin-top: 2rem;
     width: calc(100% / 1.3);
-    @include breakpoint(lg){
+    @include breakpoint(lg) {
       width: calc(100% / 2.3);
     }
     .input-container {
       width: 100%;
       display: flex;
       flex-direction: column;
-     
-      @include breakpoint(lg){
+
+      @include breakpoint(lg) {
         flex-direction: row;
         justify-content: space-between;
       }
-     
+
       margin-top: 1.4rem;
       label {
         color: var(--theme_text_color);
         font-family: $font_family;
         font-weight: 600;
       }
-      input[type="checkbox"]{
+      input[type="checkbox"] {
         margin-top: 1rem;
-        @include breakpoint(lg){
+        @include breakpoint(lg) {
           margin-top: 0;
         }
       }
       input:not(input[type="checkbox"]) {
         margin-top: 1rem;
-        @include breakpoint(lg){
-          margin-top: 0
+        @include breakpoint(lg) {
+          margin-top: 0;
         }
         outline: none;
         border: 1px solid var(--theme_primary_color);
         padding: 0.5rem;
         border-radius: 0.5rem;
         width: calc(100% / 1.2);
-        @include breakpoint(lg){
+        @include breakpoint(lg) {
           width: calc(100% / 2);
         }
         color: var(--theme_text_color);
         font-family: $font_family;
         background-color: var(--theme_primary_color);
       }
-      
     }
     button {
       color: var(--theme_text_color);
@@ -2017,7 +2047,9 @@ footer {
       background-color: var(--theme_secondary_color);
       margin-top: 1.2rem;
       padding: 0.5rem 1.2rem;
-      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
       cursor: pointer;
       border-bottom-left-radius: 10px;
       border-top-right-radius: 10px;
@@ -2033,7 +2065,7 @@ footer {
   background-color: #ebebeb;
   display: flex;
   flex-direction: column;
-  
+
   height: 100vh;
   align-items: center;
   justify-content: center;
@@ -2059,7 +2091,6 @@ footer {
 
     a {
       text-decoration: underline;
-      
     }
   }
 }

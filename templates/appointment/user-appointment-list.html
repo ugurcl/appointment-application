@@ -9,93 +9,30 @@
         <tr>
           <th>Eğitmen</th>
           <th>Randevu Alan</th>
+          <th>Randevu Türü</th>
           <th>Randevu Durumu</th>
           <th>Randevu Tarihi</th>
-          <th>Randevuyu İptal Et</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Doygun DEMİROL</td>
-          <td>Uğur c4lıskan</td>
-          <td class="success_text">Onaylandı</td>
-          <td>12.04.2024 10:11</td>
-          <td>
-            <a href="">Randevuyu iptal et</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Doygun DEMİROL</td>
-          <td>Uğur c4lıskan</td>
-          <td>randevu alındı</td>
-          <td>12.04.2024 10:11</td>
-          <td>
-            <a href="#">Randevuyu iptal et</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Doygun DEMİROL</td>
-          <td>Uğur c4lıskan</td>
-          <td class="success_text">Onaylandı</td>
-          <td>12.04.2024 10:11</td>
-          <td>
-            <a href="#">Randevuyu iptal et</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Doygun DEMİROL</td>
-          <td>Uğur c4lıskan</td>
-          <td>randevu alındı</td>
-          <td>12.04.2024 10:11</td>
-          <td>
-            <a href="#">Randevuyu iptal et</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Doygun DEMİROL</td>
-          <td>Uğur c4lıskan</td>
-          <td>randevu alındı</td>
-          <td>12.04.2024 10:11</td>
-          <td>
-            <a href="#">Randevuyu iptal et</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Doygun DEMİROL</td>
-          <td>Uğur c4lıskan</td>
-          <td>randevu alındı</td>
-          <td>12.04.2024 10:11</td>
-          <td>
-            <a href="#">Randevuyu iptal et</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Doygun DEMİROL</td>
-          <td>Uğur c4lıskan</td>
-          <td class="success_text">Onaylandı</td>
-          <td>12.04.2024 10:11</td>
-          <td>
-            <a href="#">Randevuyu iptal et</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Doygun DEMİROL</td>
-          <td>Uğur c4lıskan</td>
-          <td>randevu alındı</td>
-          <td>12.04.2024 10:11</td>
-          <td>
-            <a href="#">Randevuyu iptal et</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Doygun DEMİROL</td>
-          <td>Uğur c4lıskan</td>
-          <td>randevu alındı</td>
-          <td>12.04.2024 10:11</td>
-          <td>
-            <a href="#">Randevuyu iptal et</a>
-          </td>
-        </tr>
+        {% for item in appointment_list %}
+          <tr>
+            <td>{{item.appointment.staff_member.user.get_full_name}}</td>
+            <td>{{item.customer.user.get_full_name}}</td>
+            <td>{{item.appointment_type}}</td>
+            {% if item.status == 'Beklemede' %}
+              <td class="">{{item.status}}</td>
+            {% elif item.status == 'Onaylandı' %}
+              <td class="success_text">{{item.status}}</td>
+            {% else %}
+              <td style="color: #b83535;">{{item.status}} </td>
+            {% endif %}
+            
+            <td>{{item.appointment.date|date:"d.m.Y"}} {{item.appointment.time|date:"H:i"}}</td>
+           
+          </tr>
+        {% endfor %}
+       
       </tbody>
     </table>
   </div>

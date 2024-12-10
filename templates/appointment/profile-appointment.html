@@ -23,7 +23,9 @@
       <img src="{{item.profile_picture.url}}" alt="" id="user-profile-image" />
       <div class="user-profile">
         <span class="user-name"
-          >{{item.title}} {{item.user.first_name}} {{item.user.last_name}}</span
+          >{% if item.title %}
+            {{item.title}}
+          {% endif %} {{item.user.first_name}} {{item.user.last_name}}</span
         >
         <span class="user-about">{{item.bio}}</span>
         <div class="user-footer">
@@ -36,7 +38,7 @@
           {% endif %}
           <div class="appointment-detail">
             <i class="bi bi-arrow-right"></i>
-            <a href="">Randevu Al</a>
+            <a href="{% url 'make_appointment' slug=item.slug  %}">Randevu Al</a>
           </div>
         </div>
       </div>
@@ -79,12 +81,14 @@
         >
         <div class="user-footer">
           <div class="user-email">
+            {% if item.contact_email is not None %}
             <i class="bi bi-envelope"></i>
-            <span>${item.contact_email}</span>
+              <span>${item.contact_email}</span>
+            {% endif %}
           </div>
           <div class="appointment-detail">
             <i class="bi bi-arrow-right"></i>
-            <a href="">Randevu Al</a>
+             <a href= '/randevu-al/${item.slug} '>Randevu Al</a>
           </div>
         </div>
       </div>
@@ -125,12 +129,14 @@
         >
         <div class="user-footer">
           <div class="user-email">
-            <i class="bi bi-envelope"></i>
-            <span>${item.contact_email}</span>
+            {% if item.contact_email is not None %}
+              <i class="bi bi-envelope"></i>
+              <span>${item.contact_email}</span>
+            {% endif %}
           </div>
           <div class="appointment-detail">
             <i class="bi bi-arrow-right"></i>
-            <a href="">Randevu Al</a>
+             <a href= '/randevu-al/${item.slug} '>Randevu Al</a>
           </div>
         </div>
       </div>
@@ -153,6 +159,7 @@
         success: function (response) {
           if (response.content != '') {
             response.content.forEach(function (item) {
+              let slug = item.slug
               var postHtml = `
 <div class="profile-card">
       <img
@@ -168,11 +175,12 @@
         <div class="user-footer">
           <div class="user-email">
             <i class="bi bi-envelope"></i>
-            <span>${item.contact_email}</span>
+            <span>${item.contact_email} ${item.slug}</span>
           </div>
           <div class="appointment-detail">
             <i class="bi bi-arrow-right"></i>
-            <a href="">Randevu Al</a>
+            <a href= '/randevu-al/${item.slug} '>Randevu Al</a>
+
           </div>
         </div>
       </div>

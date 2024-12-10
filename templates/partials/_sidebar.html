@@ -17,9 +17,13 @@
         <li><a href="{% url 'password_change' %}">Şifre İşlemleri</a></li>
         
 
-          {% if user.profile.is_verified %}    
-            <li class="navbar-links"> <a href="">Randevu Oluştur</a></li>
-          {% endif %}
+        {% if user.profile.is_verified %}
+                      
+        <li class="navbar-links"> <a href="{% url 'create_appointment' %}">Randevu Oluştur</a></li>
+
+        {% else %}
+        <li class="navbar-links"><a href="">Randevu Al</a></li>
+        {% endif %}
         <li><a href="{% url 'logout' %}">Çıkış Yap</a></li>
 
         {% endif %}

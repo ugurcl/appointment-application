@@ -5,64 +5,109 @@
   <div class="appointment-container">
     <div class="profile">
       <img
-        src="https://www.bingol.edu.tr/Documents/file/bb_UniversityUsers/5b54bd4b-70b9-43e9-bbd8-c792e87a3ce8.jpg"
+        src="{{profile.profile_picture.url}}"
         alt=""
       />
       <div class="profile-container">
-        <h1 class="profile-name">Öğr. Gör. ERDEM GÖNÜLTAŞ</h1>
-        <span class="about"
-          >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima
-          impedit possimus eaque aliquid! Magnam illum ipsum reiciendis
-          doloremque ipsa obcaecati repudiandae quia consectetur accusamus,
-          vitae animi, ratione, aut cumque nam. lo0rem Lorem ipsum, dolor sit
-          amet consectetur adipisicing elit. Omnis quasi asperiores sunt
-          voluptas hic ex dolores enim illum sint dicta explicabo, eos
-          cupiditate saepe eum magnam obcaecati dignissimos accusamus
-          perferendis.
+        <h1 class="profile-name">
+          {% if profile.title is not None  %}
+            
+          {{profile.title}}
+          {% endif %}
+          {% if profile.user.first_name is not None %}
+              {{profile.user.first_name}}
+          {% endif %}
+          {% if profile.user.last_name is not None %}
+              {{profile.user.last_name}}
+          {% endif %}
+          </h1>
+        <span class="about">
+          {% if profile.bio is not None %}
+            
+          {{profile.bio}}
+            {% else %}
+              Biyografi yok.
+          {% endif %}
         </span>
         <div class="profile-contact-div">
+          {% if profile.contact_email is not None %}
+            
           <i class="fas fa-envelope"></i>
-          <span>egonultas@bingol.edu.tr</span>
+          <span>{{profile.contact_email}}</span>
+          {% endif %}
         </div>
       </div>
     </div>
+
+    {% if appointment %}
+      
     <div class="book-appointment-container">
-      <form action="">
+      <form method="POST">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% csrf_token %}
         <h1>Uygun Randevu Tarihleri</h1>
-        <select class="appointment-date-select">
+        <select class="appointment-date-select" name="appointment_date">
           <option value="">Tarih Seçin</option>
-          <option value="">10.12.2024</option>
-          <option value="">09.11.2024</option>
-          <option value="">02.10.2024</option>
-        </select>
-        <div class="appointment-time-container">
-          <button type="button">10.00</button>
-          <button type="button">12.00</button>
-          <button type="button">09.00</button>
-          <button type="button">12.00</button>
-          <button type="button">19.00</button>
-          <button type="button">10.00</button>
-          <button type="button">12.00</button>
-          <button type="button">09.00</button>
-          <button type="button">12.00</button>
-          <button type="button">19.00</button>
+          {% for item in appointment %}
+            <option value="{{item}}">{{item}}</option>
+          {% endfor %}
           
-        </div>
-        <input
-          type="text"
-          placeholder="Randevu Süresini Giriniz ör(1 saat)"
-          id=""
-        />
-        <textarea
-          name=""
-          id=""
-          cols="30"
-          placeholder="Randevu konusunu girin"
-        ></textarea>
+         
+        </select>
+        <select class="appointment-time-select" name="appointment_time">
+          <option value="">Saat Seçin</option>
+
+        </select>
+        {{form.appointment_type}}
+        <span>Randevu sürenizi girin</span>
+        {{form.time}}
+        
+        {{form.content}}
         <button type="submit" class="form-button">Randevu al</button>
       </form>
+      </div>
+      {% endif %}
     </div>
-  </div>
-</section>
+  </section>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
 
-{% endblock container %}
+    $(document).ready(function(){
+
+      $('.appointment-date-select').change(function(){
+        var selected_date = $(this).val();
+        
+        const timeSelect = $('.appointment-time-select'); // Saat select 
+        timeSelect.html('<option value="">Saatler yükleniyor...</option>');
+        $.ajax({
+                url: '{% url "get_times" %}', // Django view URL
+                data: { date: selected_date }, // Tarih parametresini gönder
+                success: function (data) {
+                    timeSelect.empty();
+
+                    if (data.times && data.times.length > 0) {
+                        $.each(data.times, function (index, time) {
+                            timeSelect.append(new Option(time, time));
+                        });
+                    } else {
+                        timeSelect.append(new Option('Bu tarih için uygun saat yok', ''));
+                    }
+                },
+                error: function () {
+                    timeSelect.html('<option value="">Saatler yüklenemedi</option>');
+                }
+            });
+      })
+    })
+
+
+  </script>
+  {% endblock container %}
