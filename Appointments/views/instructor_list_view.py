@@ -64,6 +64,7 @@ class SearchInstitution(View):
         content_data = [
             {
                 "title": _.title.title if _.title and _.title.title else '',
+                "slug": _.slug if _.slug and _.slug else '',
                 "first_name": _.user.first_name if _.user and _.user.first_name else '',
                 "last_name": _.user.last_name if _.user and _.user.last_name else '',
                 'bio': _.bio if _.bio else '',

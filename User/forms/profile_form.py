@@ -16,11 +16,15 @@ class UserModelForm(forms.ModelForm):
         validators=[
             RegexValidator(
                 regex=r'^[a-zA-ZçÇğĞıİşŞüÜöÖ\s\-]+$',
-                message="Username can only contain letters, digits, underscores, and hyphens."
+                message="adsasd"
             ),
             MinLengthValidator(4,message='Kullanıcı adı minimum 4 karakter olmak zorundadır.'), 
             MaxLengthValidator(30, message='Kullanıcı adı maximum 30 karakter olmak zorundadır.'),
         ],
+        error_messages={
+            'required': 'Bu alan zorunludur.',
+            'invalid': 'Geçersiz bir kullanıcı adı girdiniz.',
+        }
         
     )
 
