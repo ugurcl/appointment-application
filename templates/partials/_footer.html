@@ -16,7 +16,7 @@
         <li><a href="{% url 'index' %}">Ana Sayfa</a></li>
         <li><a href="{% url 'about' %}">Hakkımızda</a></li>
         {% if  user.is_authenticated %}
-          <li><a href="">Randevu Al</a></li>
+          <li><a href="{% url 'instructor_list' %}">Randevu Al</a></li>
         {% endif %}
         <li><a href="{% url 'contact' %}">İletişim</a></li>
       </ul>

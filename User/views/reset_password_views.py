@@ -29,7 +29,7 @@ class PasswordResetRequestView(FormView):
         email = form.cleaned_data.get('email')
         try:
             user = User.objects.get(email=email)
-            if not user.exist():
+            if not user:
                 messages.error(request=self.request, message='E-Posta Adresi Bulunamadı')
                 return redirect(self.request.path)
             

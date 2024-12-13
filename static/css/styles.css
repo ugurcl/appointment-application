@@ -81,6 +81,14 @@
   -webkit-text-fill-color: transparent;
 }
 
+.validate_input {
+  border: 1px solid rgba(37, 156, 37, 0.651) !important;
+}
+
+.invalidate_input {
+  border: 1px solid rgba(184, 31, 31, 0.651) !important;
+}
+
 .input_component, .profile-section .profile-container .user-password-container form .input-container input, .profile-section .profile-container .user-profile-container form .input-container textarea, .profile-section .profile-container .user-profile-container form .input-container input, .profile-section .profile-container .user-profile-container form .input-container #id_title, .book-appointment-section .appointment-container .book-appointment-container form .appointment-time-select, .book-appointment-section .appointment-container .book-appointment-container form select, .book-appointment-section .appointment-container .book-appointment-container form .appointment-date-select, .book-appointment-section .appointment-container .book-appointment-container form input, .password-reset-section .password-reset-container .password-reset-right-container form .input-container input, .contact-section .contact-container .contact-right-container form input,
 .contact-section .contact-container .contact-right-container form textarea, .login-section .login-container .login-right-container form .input-container input, .create-appointment .login-container .login-right-container form .input-container input, .appointment-user-section .login-container .login-right-container form .input-container input, .profile-section .login-container .login-right-container form .input-container input, .book-appointment-section .login-container .login-right-container form .input-container input, .about-us-section .login-container .login-right-container form .input-container input, .about-us-section .about-container .login-right-container form .input-container input, .about-us-section .about-container .about-right-container form .input-container input, .password-reset-section .login-container .login-right-container form .input-container input, .password-reset-section .password-reset-container .login-right-container form .input-container input, .contact-section .login-container .login-right-container form .input-container input, .contact-section .contact-container .login-right-container form .input-container input, .register-section .login-container .login-right-container form .input-container input, .register-section .register-container .login-right-container form .input-container input, .contact .contact-form form input, .search-container #academic-departments, .search-container #search-instructor {
   background-color: var(--theme_primary_color);

@@ -88,7 +88,7 @@
           </div>
           <div class="appointment-detail">
             <i class="bi bi-arrow-right"></i>
-             <a href= '/randevu-al/${item.slug} '>Randevu Al</a>
+             <a href= '/randevu-al/${item.slug}'>Randevu Al</a>
           </div>
         </div>
       </div>
@@ -115,6 +115,7 @@
           $(".appointment-container").empty();
           if (response.data != "") {
             response.data.forEach(function (item) {
+              console.log(item)
               var html = `
 <div class="profile-card">
       <img
@@ -136,7 +137,7 @@
           </div>
           <div class="appointment-detail">
             <i class="bi bi-arrow-right"></i>
-             <a href= '/randevu-al/${item.slug} '>Randevu Al</a>
+             <a href= '/randevu-al/${item.slug}'>Randevu Al</a>
           </div>
         </div>
       </div>
@@ -175,11 +176,11 @@
         <div class="user-footer">
           <div class="user-email">
             <i class="bi bi-envelope"></i>
-            <span>${item.contact_email} ${item.slug}</span>
+            <span>${item.contact_email}</span>
           </div>
           <div class="appointment-detail">
             <i class="bi bi-arrow-right"></i>
-            <a href= '/randevu-al/${item.slug} '>Randevu Al</a>
+            <a href= '/randevu-al/${slug}'>Randevu Al</a>
 
           </div>
         </div>
