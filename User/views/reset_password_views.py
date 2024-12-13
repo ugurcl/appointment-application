@@ -27,11 +27,12 @@ class PasswordResetRequestView(FormView):
 
     def form_valid(self, form):
         email = form.cleaned_data.get('email')
+        EMAİL_CONTROL = User.objects.filter(email=email).exists()
+        if not EMAİL_CONTROL:
+            return redirect('index')
         try:
             user = User.objects.get(email=email)
-            if not user:
-                messages.error(request=self.request, message='E-Posta Adresi Bulunamadı')
-                return redirect(self.request.path)
+            
             
             token = default_token_generator.make_token(user)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
